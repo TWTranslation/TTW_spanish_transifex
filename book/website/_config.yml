@@ -150,10 +150,7 @@ exclude:
 - vendor/ruby/
 
 keep_files:
-- zh_CN
-- zh-cn
 - es
-- tr
 
 plugins:
 - jekyll-redirect-from
