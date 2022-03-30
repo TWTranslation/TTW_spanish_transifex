@@ -1,0 +1,2337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Search the site</title>
+  <meta name="description" content="        ">
+
+  <link rel="canonical" href="https://the-turing-way.netlify.com//search">
+  <link rel="alternate" type="application/rss+xml" title="The Turing Way" href="https://the-turing-way.netlify.com//feed.xml">
+
+  <meta property="og:url"         content="https://the-turing-way.netlify.com//search" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Search the site" />
+<meta property="og:description" content="        " />
+<meta property="og:image"       content="https://the-turing-way.netlify.com/" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://the-turing-way.netlify.com//search",
+  "headline": "Search the site",
+  "datePublished": "2022-03-30T16:47:21+01:00",
+  "dateModified": "2022-03-30T16:47:21+01:00",
+  "description": "        ",
+  "author": {
+    "@type": "Person",
+    "name": "Kirstie Whitaker"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://the-turing-way.netlify.com/",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://the-turing-way.netlify.com/",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    },
+    
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/assets/js/page/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/assets/js/page/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/assets/js/page/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+<!-- Display Thebelab button in each code cell -->
+<script>
+/**
+ * Set up thebelab button for code blocks
+ */
+
+const thebelabCellButton = id =>
+  `<a id="thebelab-cell-button-${id}" class="btn thebebtn o-tooltip--left" data-tooltip="Interactive Mode">
+    <img src="/assets/images/edit-button.svg" alt="Start thebelab interactive mode">
+  </a>`
+
+
+const addThebelabButtonToCodeCells =  () => {
+
+  const codeCells = document.querySelectorAll('div.input_area > div.highlight:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.getElementById("thebelab-cell-button-" + id) == null) {
+      codeCell.insertAdjacentHTML('afterend', thebelabCellButton(id));
+    }
+  })
+}
+
+initFunction(addThebelabButtonToCodeCells);
+</script>
+
+
+<script src="https://unpkg.com/thebelab@latest/lib/index.js" async></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+
+                // Clean up the language to make it work w/ CodeMirror and add it to the cell
+                dataLanguage = ""
+                dataLanguage = detectLanguage(dataLanguage);
+                codeCell.setAttribute('data-language', dataLanguage)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyAndThebeButtons = document.querySelectorAll('.copybtn, .thebebtn')
+            copyAndThebeButtons.forEach((button, index) => {
+                button.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+
+            // Find any cells with an initialization tag and ask ThebeLab to run them when ready
+            var thebeInitCells = document.querySelectorAll('div.tag_thebelab-init');
+            thebeInitCells.forEach((cell) => {
+                console.log("Initializing ThebeLab with cell: " + cell.id);
+                cell.querySelector('.thebelab-run-button').click();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButtons = document.querySelectorAll('[id^=thebelab], [id$=thebelab]')
+        thebelabButtons.forEach((thebelabButton,index) => {
+            if (thebelabButton === null) {
+                setTimeout(initThebelab, 250)
+                return
+            };
+            thebelabButton.addEventListener('click', addThebelabToCodeCells);
+        });
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+
+// Helper function to munge the language name
+var detectLanguage = (language) => {
+    if (language.indexOf('python') > -1) {
+        language = "python";
+    }
+    return language;
+}
+</script>
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.8.1/tocbot.min.js" async></script>
+  <script src="/assets/js/page/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/assets/js/page/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/assets/js/page/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/assets/css/styles.css",
+        style: "#textbook_content {padding-top: 40px};",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList,
+        documentTitle: "Made with Jupyter Book"
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- Include the ThebeLab config so it gets reloaded on each page -->
+    <script type="text/x-thebe-config">{
+    requestKernel: true,
+    binderOptions: {
+    repo: "alan-turing-institute/the-turing-way-book",
+    ref: "master",
+    },
+    codeMirrorConfig: {
+    theme: "abcdef",
+    mode: "python"
+    },
+    kernelOptions: {
+    kernelName: "python3",
+    path: ""
+    }
+}
+</script>
+
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://github.com/alan-turing-institute/the-turing-way/"><img src="" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">The Turing Way</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/introduction/introduction">
+        <a class="c-sidebar__entry"
+          href="/introduction/introduction.html"
+        >
+          
+            1.
+          
+          Introduction
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/reproducibility/reproducibility">
+        <a class="c-sidebar__entry"
+          href="/reproducibility/reproducibility.html"
+        >
+          
+            2.
+          
+          Reproducibility
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reproducibility/01/importantforscience">
+              <a class="c-sidebar__entry"
+                href="/reproducibility/01/importantforscience.html"
+              >
+                
+                  2.1
+                
+                Why reproducibility is important
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reproducibility/02/whycare">
+              <a class="c-sidebar__entry"
+                href="/reproducibility/02/whycare.html"
+              >
+                
+                  2.2
+                
+                Why you should care
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reproducibility/03/definitions">
+              <a class="c-sidebar__entry"
+                href="/reproducibility/03/definitions.html"
+              >
+                
+                  2.3
+                
+                Definitions
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reproducibility/04/resources">
+              <a class="c-sidebar__entry"
+                href="/reproducibility/04/resources.html"
+              >
+                
+                  2.4
+                
+                Resources
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/open_research/open_research">
+        <a class="c-sidebar__entry"
+          href="/open_research/open_research.html"
+        >
+          
+            3.
+          
+          Open Research
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/open_research/01/opendata">
+              <a class="c-sidebar__entry"
+                href="/open_research/01/opendata.html"
+              >
+                
+                  3.1
+                
+                Open data
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/open_research/02/opensourcesoftware">
+              <a class="c-sidebar__entry"
+                href="/open_research/02/opensourcesoftware.html"
+              >
+                
+                  3.2
+                
+                Open source software
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/open_research/03/openhardware">
+              <a class="c-sidebar__entry"
+                href="/open_research/03/openhardware.html"
+              >
+                
+                  3.3
+                
+                Open hardware
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/open_research/04/openaccess">
+              <a class="c-sidebar__entry"
+                href="/open_research/04/openaccess.html"
+              >
+                
+                  3.4
+                
+                Open access
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/open_research/05/opennotebooks">
+              <a class="c-sidebar__entry"
+                href="/open_research/05/opennotebooks.html"
+              >
+                
+                  3.5
+                
+                Open notebooks
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/open_research/06/openscholarship">
+              <a class="c-sidebar__entry"
+                href="/open_research/06/openscholarship.html"
+              >
+                
+                  3.6
+                
+                Open scholarship
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/open_research/07/resources">
+              <a class="c-sidebar__entry"
+                href="/open_research/07/resources.html"
+              >
+                
+                  3.7
+                
+                Resources
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/version_control/version_control">
+        <a class="c-sidebar__entry"
+          href="/version_control/version_control.html"
+        >
+          
+            4.
+          
+          Version Control
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/licensing/licensing">
+        <a class="c-sidebar__entry"
+          href="/licensing/licensing.html"
+        >
+          
+            5.
+          
+          Licensing
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/licensing/01/softwarelicenses">
+              <a class="c-sidebar__entry"
+                href="/licensing/01/softwarelicenses.html"
+              >
+                
+                  5.1
+                
+                Software licenses
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/licensing/02/datalicenses">
+              <a class="c-sidebar__entry"
+                href="/licensing/02/datalicenses.html"
+              >
+                
+                  5.2
+                
+                Data licenses
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/collaborating_github/collaborating_github">
+        <a class="c-sidebar__entry"
+          href="/collaborating_github/collaborating_github.html"
+        >
+          
+            6.
+          
+          Collaborating on GitHub/GitLab
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/collaborating_github/1/readme_communication">
+              <a class="c-sidebar__entry"
+                href="/collaborating_github/1/readme_communication.html"
+              >
+                
+                  6.1
+                
+                README and Project Communication
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/collaborating_github/2/roadmapping">
+              <a class="c-sidebar__entry"
+                href="/collaborating_github/2/roadmapping.html"
+              >
+                
+                  6.2
+                
+                Roadmapping
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/collaborating_github/3/getting_contributors">
+              <a class="c-sidebar__entry"
+                href="/collaborating_github/3/getting_contributors.html"
+              >
+                
+                  6.3
+                
+                Getting Contributors
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/collaborating_github/4/checklist_bibliography">
+              <a class="c-sidebar__entry"
+                href="/collaborating_github/4/checklist_bibliography.html"
+              >
+                
+                  6.4
+                
+                Checklist and Bibliography
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/credit/credit">
+        <a class="c-sidebar__entry"
+          href="/credit/credit.html"
+        >
+          
+            7.
+          
+          Credit for reproducible research
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/rdm/rdm">
+        <a class="c-sidebar__entry"
+          href="/rdm/rdm.html"
+        >
+          
+            8.
+          
+          Research Data Management
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/rdm/fairprinciples">
+              <a class="c-sidebar__entry"
+                href="/rdm/fairprinciples.html"
+              >
+                
+                  8.1
+                
+                The FAIR principles and practices
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/rdm/storagebackup">
+              <a class="c-sidebar__entry"
+                href="/rdm/storagebackup.html"
+              >
+                
+                  8.2
+                
+                Storage and backup
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/rdm/spreadsheets">
+              <a class="c-sidebar__entry"
+                href="/rdm/spreadsheets.html"
+              >
+                
+                  8.3
+                
+                Data organisation in spreadsheets
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/rdm/docmetadata">
+              <a class="c-sidebar__entry"
+                href="/rdm/docmetadata.html"
+              >
+                
+                  8.4
+                
+                Documentation and metadata
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/rdm/sharingarchiving">
+              <a class="c-sidebar__entry"
+                href="/rdm/sharingarchiving.html"
+              >
+                
+                  8.5
+                
+                Sharing and archiving data
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/rdm/personalstories">
+              <a class="c-sidebar__entry"
+                href="/rdm/personalstories.html"
+              >
+                
+                  8.6
+                
+                Personal Stories
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/rdm/resources">
+              <a class="c-sidebar__entry"
+                href="/rdm/resources.html"
+              >
+                
+                  8.7
+                
+                Resources
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/reproducible_environments/reproducible_environments">
+        <a class="c-sidebar__entry"
+          href="/reproducible_environments/reproducible_environments.html"
+        >
+          
+            9.
+          
+          Reproducible Environments
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reproducible_environments/01/options">
+              <a class="c-sidebar__entry"
+                href="/reproducible_environments/01/options.html"
+              >
+                
+                  9.1
+                
+                Choosing a tool
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reproducible_environments/02/package-management">
+              <a class="c-sidebar__entry"
+                href="/reproducible_environments/02/package-management.html"
+              >
+                
+                  9.2
+                
+                Conda
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reproducible_environments/03/yaml">
+              <a class="c-sidebar__entry"
+                href="/reproducible_environments/03/yaml.html"
+              >
+                
+                  9.3
+                
+                YAML
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reproducible_environments/04/binder">
+              <a class="c-sidebar__entry"
+                href="/reproducible_environments/04/binder.html"
+              >
+                
+                  9.4
+                
+                Binder
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reproducible_environments/05/virtual-machines">
+              <a class="c-sidebar__entry"
+                href="/reproducible_environments/05/virtual-machines.html"
+              >
+                
+                  9.5
+                
+                Virtual machines
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reproducible_environments/06/containers">
+              <a class="c-sidebar__entry"
+                href="/reproducible_environments/06/containers.html"
+              >
+                
+                  9.6
+                
+                Containers
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reproducible_environments/07/checklist">
+              <a class="c-sidebar__entry"
+                href="/reproducible_environments/07/checklist.html"
+              >
+                
+                  9.7
+                
+                Checklist
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reproducible_environments/08/resources">
+              <a class="c-sidebar__entry"
+                href="/reproducible_environments/08/resources.html"
+              >
+                
+                  9.8
+                
+                Resources
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/code_quality/code_quality">
+        <a class="c-sidebar__entry"
+          href="/code_quality/code_quality.html"
+        >
+          
+            10.
+          
+          Code quality
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/testing/testing">
+        <a class="c-sidebar__entry"
+          href="/testing/testing.html"
+        >
+          
+            11.
+          
+          Testing
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/reviewing/reviewing">
+        <a class="c-sidebar__entry"
+          href="/reviewing/reviewing.html"
+        >
+          
+            12.
+          
+          Reviewing
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reviewing/01/how_helpful">
+              <a class="c-sidebar__entry"
+                href="/reviewing/01/how_helpful.html"
+              >
+                
+                  12.1
+                
+                How this will help you and why this is useful
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reviewing/02/best_practice">
+              <a class="c-sidebar__entry"
+                href="/reviewing/02/best_practice.html"
+              >
+                
+                  12.2
+                
+                Best Practice
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reviewing/03/typical_workflows">
+              <a class="c-sidebar__entry"
+                href="/reviewing/03/typical_workflows.html"
+              >
+                
+                  12.3
+                
+                Typical Workflows
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reviewing/04/checklists_bib">
+              <a class="c-sidebar__entry"
+                href="/reviewing/04/checklists_bib.html"
+              >
+                
+                  12.4
+                
+                Checklists, what to learn next and bibliography
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/continuous_integration/continuous_integration">
+        <a class="c-sidebar__entry"
+          href="/continuous_integration/continuous_integration.html"
+        >
+          
+            13.
+          
+          Continuous Integration
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/make/make">
+        <a class="c-sidebar__entry"
+          href="/make/make.html"
+        >
+          
+            14.
+          
+          Reproducible Research with Make
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/research_compendia/research_compendia">
+        <a class="c-sidebar__entry"
+          href="/research_compendia/research_compendia.html"
+        >
+          
+            15.
+          
+          Research Compendia
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/risk_assessment/risk_assessment">
+        <a class="c-sidebar__entry"
+          href="/risk_assessment/risk_assessment.html"
+        >
+          
+            16.
+          
+          Risk Assessment
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/risk_assessment/01/longreadriskassessment">
+              <a class="c-sidebar__entry"
+                href="/risk_assessment/01/longreadriskassessment.html"
+              >
+                
+                  16.1
+                
+                Long Read on Risk Assessment
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/risk_assessment/02/finalsummary">
+              <a class="c-sidebar__entry"
+                href="/risk_assessment/02/finalsummary.html"
+              >
+                
+                  16.2
+                
+                Summary
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/binderhub/binderhub">
+        <a class="c-sidebar__entry"
+          href="/binderhub/binderhub.html"
+        >
+          
+            17.
+          
+          BinderHub
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/glossary/glossary">
+        <a class="c-sidebar__entry"
+          href="/glossary/glossary.html"
+        >
+          
+            18.
+          
+          Glossary
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button"><img src="/assets/images/download-solid.svg" alt="Download" /></button>
+    <div class="download-buttons">
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
+    </div>
+</div>
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><img src="/assets/images/list-solid.svg" alt="Search" />   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/search.html" class="topbar-right-button" id="search-button">
+    <img src="/assets/images/search-solid.svg" alt="Search" />
+  </a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+              <div class="search-content__inner-wrap">
+    <input type="text" id="lunr_search" class="search-input" tabindex="-1" placeholder="'Enter your search term...''" />
+    <div id="results" class="results"></div>
+</div>
+
+<script>
+    // Add the lunr store since we will now search it
+    var store = [{
+        "title": "BinderHub",
+        
+        "excerpt": "binderhub binder kubernetes jupyterhub docker io en latest resources why helm repodocker build readthedocs cloud image code access based computational control own mybinder org users documentation html repository user cluster role reproducibility chapter service environment environments reproducibleenvironments com useful compute link deploying further reading index software such instances order configuration file overview platform running registry microsoft azure images turing summary help good does work happens clicked issues face bibliography technology tools need research services also browser instance not hosting system manage sh manager set applications jupyter badge workshop permissions docs us zero level version versioncontrol very important reproducible definitions glossary",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/binderhub/binderhub.html",
+        "teaser":null},{
+        "title": "Code quality",
+        
+        "excerpt": "code style quality coding tools analysis services software static checks google list org easier bugs issues also source io python github com using used language summary automatic online providing same read why languages guide open projects formatting automatically editorconfig editors support repository free command line formatters several following yourself understand therefore well analyze addition maintain consistent prospector readthedocs lintr shellcheck www format makes matters styles example pep dev guides various programming highly recommended multiple project black yapf often editor usually service gitlab features configured shields prerequisite importance experience programminghistorian en lessons intro bash helpful table contents ways improve require relatively",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/code_quality/code_quality.html",
+        "teaser":null},{
+        "title": "README and Project Communication",
+        
+        "excerpt": "project readme open welcome get mozilla github io leadership training series articles opening should cover canvas communication files mat new visitors thus part set really important documents potential contributors feel invite involved file great doing why makes special exciting started where key resources develop strategy good tool help clarify want achieve",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/collaborating_github/1/readme_communication.html",
+        "teaser":null},{
+        "title": "Roadmapping",
+        
+        "excerpt": "work project tasks need roadmap goal helping milestones github roadmapping plan larger piece very useful outline share potential contributors covers vision should include timeline completed thus anyone new develop understanding currently happening whats coming next also great tool highlight dependencies among schedule efficiently really helpful get main organised around goals dates events timeframes githubs board help com en articles tracking progress boards manage issues",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/collaborating_github/2/roadmapping.html",
+        "teaser":null},{
+        "title": "Getting Contributors",
+        
+        "excerpt": "project conduct code guidelines contributors open turing contributing personas community leadership create potential mozilla github re used participation contribute further own training series need behaviour projects file where ideas additional pathways persona should existing users provide imagine main group example well resources help io articles building communities participating documents interactions also might codes outlining openly adapted com alan institute blob master md examples get expected contributions those important understand key similar getting likely better others feed back features improvements description user tool describe imaginary person based observations knowledge real life enough detail someone needs reactions once created interact following engagement",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/collaborating_github/3/getting_contributors.html",
+        "teaser":null},{
+        "title": "Checklist and Bibliography",
+        
+        "excerpt": "github community open leadership section guidelines project recommended readme licence mozilla series contributor checklist encourages collaboration practice insights tab provides called includes list documents should those include code conduct contributing templates issues pull requests profile assets figures communityprofilegithub png bibliography chapter abbreviated version material licensed under creative commons attribution creativecommons org licenses complete handbook available io training articles highly additional reading",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/collaborating_github/4/checklist_bibliography.html",
+        "teaser":null},{
+        "title": "Collaborating on GitHub/GitLab",
+        
+        "excerpt": "github gitlab versioncontrol provides contributions collaborating prerequisites recommended skill level prerequisite importance experience version control helpful summary why useful developing project analysis collaboratively prompter document work detail great opportunity get additional contributors idea everything new ideas bug reports actual code",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/collaborating_github/collaborating_github.html",
+        "teaser":null},{
+        "title": "Continuous Integration",
+        
+        "excerpt": "travis project ci build continuous tests integration run com name script code yml file testing operating github docs not environment language test python version work multiple used user computational systems repository example programming here running different should system changes software commit deployment into possible org does dependencies also any regularly results using badge section os commands command new need delivery steps versions bugs chapter jobs information fail environments set after small found job automatically process available such languages master secure guide mit attribution runs made development next further early automated its report return pull md control setting containers success against",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/continuous_integration/continuous_integration.html",
+        "teaser":null},{
+        "title": "Credit for reproducible research",
+        
+        "excerpt": "data software research orcid cite org citation open repository doi making get paper information support zenodo available outputs github force cited journals example file name html easy using articles reference include www identifier findings principles reproducibility useful not why stuff citeable just joss should guide en work help learn citations record its citing others todo rdm similar dataset where examples com same any version access url study hc us deposit key credit reproducible essential summary sure increase visibility checklist next further reading such papers well system authors possible referencing format directly add publishers journal jors author nl described tell link",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/credit/credit.html",
+        "teaser":null},{
+        "title": "Glossary",
+        
+        "excerpt": "system software files environment used versions computational its operating including projects computer installed packages package management encapsulate entire customised settings glossary binder web based service allows users upload share fully functioning define features impact behaviour work done such conda commonly container lightweight dockerfile file creating docker images image generating containers tool installing managing uninstalling specific virtual machine simulated yaml human readable writable markup language configuration",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/glossary/glossary.html",
+        "teaser":null},{
+        "title": "Introduction",
+        
+        "excerpt": "turing com github institute alan contributors blob master md our org data book web community project zenodo archive ensure reproducibility get jupyter html doi reproducible science easy touch contributing research work netlify definitions start also figures please include not version any becky arnold louise bowler sarah gibson patricia herterich rosie higman welcome goal researchers projects end means sure students jpg open visit guidelines every want expected code funders publications analysis built future development academic handbook build questions repository books example jupyterbook us useful incredible kirstie whitaker ac uk psychiatry rachael ainsworth anna krystalli alexander morley martin oreilly link therefore really",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/introduction/introduction.html",
+        "teaser":null},{
+        "title": "Software licenses",
+        
+        "excerpt": "xtas license under work python combined software code works licenses licensed not th td gplv tr distributed unidecode apache program derivative gpl corenlp example any source version vs rectangle distribute free v square contains sup library snowball should authors chardet proprietary only illustration allow derived separate box freedom copyleft gnu within libraries examples bsd three openifs permissive copyright also want representing dales without project modified its well lgpl compatible below general public does both same figures licenseexamples svg png represents top words alv later org whole four let allowed restrictions cannot original additional different constraints binary must tdyes tdsame large",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/licensing/01/softwarelicenses.html",
+        "teaser":null},{
+        "title": "Data licenses",
+        
+        "excerpt": "data licenses section under construction",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/licensing/02/datalicenses.html",
+        "teaser":null},{
+        "title": "Licensing",
+        
+        "excerpt": "licensing software summary help why useful laws chapter legal license recommended skill level none important contents else intellectual property give explain gives overview dont without consent prerequisites prerequisite importance notes necessary understand affect project low table softwarelicenses data datalicenses anything society cannot development determined law constraints particular domain stem abstract things designs stories computer programs resemble physical objects allowing owned aims brief relevant enough able read licenses free open source combining different sources works perspective also rules worked deal common situations disclaimer good advice timely specific given expert written engineer not lawyer its heavily simplified very complex field intent basics",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/licensing/licensing.html",
+        "teaser":null},{
+        "title": "Reproducible Research with Make",
+        
+        "excerpt": "report output data makefile csv pdf png scripts figure py rules file clean targets inputfile tex using figures files generatehistogram python rule pattern script phony variables run directory org results analysis f input target www gnu reproducible com rm variable bash manual also build o not latex command research makefiles create tutorial html table automatic paper prerequisites line called tt tables project uses contains only pdflatex cd recipe software wildcard genre print because manuscript repository notice want mv name above allcsv en graph used text code histograms our into looks add patsubst genres canned prerequisite follow example small such well",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/make/make.html",
+        "teaser":null},{
+        "title": "Open data",
+        
+        "excerpt": "data should research open doi used available possible example not access also rdm datasets credit identifier researchers any dataset information only work management chapter made accessible step ensure include cite persistent resource datacite able effective original researcher reasons reproduce without cannot new user re barriers html its steps making metadata formats identification specific such scheme registration privacy significant global transformation digital efficient practice effectively often even sharing international commercial main difficult fully reused into obtain internet technical part anyone wishes default due clear free value therefore listed below fair easily accessing location whenever provide type piece file easy understand understood",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/open_research/01/opendata.html",
+        "teaser":null},{
+        "title": "Open source software",
+        
+        "excerpt": "open source project software projects code work not contributing should community others example such changes contribute also include new main working research just making someone file readme conduct any its closed researchers help get www information might documentation different contributors things org run guidelines questions contributions likely need own helps both active github issues issue quickly where used years very much opportunities features back take good set into ask those contributor apply few comes idea version tests feature com conventions submit through means learn python machine learning using specific similar only authors often bugs improve skills whether writing looking potentially",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/open_research/02/opensourcesoftware.html",
+        "teaser":null},{
+        "title": "Open hardware",
+        
+        "excerpt": "hardware design open files source original not software modify provide others project instructions share its code example formats physical cad tools should possible researchers include required explain someone materials part such anyone users hardwares components easy why understand proprietary general try helpful file pdf bill parts good object drawings available modifications free still get documentation equipment doing also want better much sharing using particular any auxiliary format text where photos processes product created designs computer aided access read device wish readily accessible ability does build works verify results makes benefits core increases easily easier legal here projects overview description audience",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/open_research/03/openhardware.html",
+        "teaser":null},{
+        "title": "Open access",
+        
+        "excerpt": "open access research journals available repositories self publication version journal archiving researchers free its also paper published institutional not results publishing any final articles must work uses allow known libre subject based peer include once copyright publicly manuscript new movement charge such provide papers preprints preprint reviewed review versions archive usually finally read policy transfer beyond publishers accepted period months licence model gratis others does permit except possible common years those publications subscription fee however scholarship anyone user initial achieve scholars deposit result servers sciences documents considered services according org harvesters managed openly contents content general build should moment regarding",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/open_research/04/openaccess.html",
+        "teaser":null},{
+        "title": "Open notebooks",
+        
+        "excerpt": "open research notebooks researchers notebook making data even project online helps lab elns experimental protocols paper keep access share practice years real scientific benefit increasing any electronic enable organize store procedures plans notes unfiltered interpretations using computer mobile device digital analogue offer several advantages traditional documenting during active phase including searchability within across secure storage multiple redundancies remote ability easily among team members collaborators simply such openly available usually choose very beginning projects rather wait months through journal publication current allows post sharing timely manner reduce duplication work foster new collaborations cultivates dialogue others also avoid exploring dead ends mistakes",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/open_research/05/opennotebooks.html",
+        "teaser":null},{
+        "title": "Open scholarship",
+        
+        "excerpt": "research ppi open resources content science oers example public researchers educational teaching materials right community such citizen involvement not www org members scientific contribute patient uk learning access work often own ways volunteers scholarship available different any means into making openly everyone data help under openumbrella used reused without permission examples courses online obviously video anyone particular retain cases resource share students enable post commons material fully copies study original new generate great wider already exist helps benefits participation co opportunities engaging factors should include english power particularly doing health project interest patients cycle very personal grant applications submissions parkinsons",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/open_research/06/openscholarship.html",
+        "teaser":null},{
+        "title": "Resources",
+        
+        "excerpt": "open et al cc attribution org data project licence science creative source com www commons hajjem research available information access book eu software hardware website opensource international repository include online resources uk noncommercial freely accessible copy used notebooks github openingscience s west amazonaws guide html turing introduction nc sharealike norris antelman mccabe snyder metadata any persistent identifier such doi code granting others right modify work readme file useful guidelines materials take version further place ac handbook fosteropenscience content noncommercical sa describe someone relevant help pick appropriate containing install want where documentation designs openly example store public electronic lab notebook learn",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/open_research/07/resources.html",
+        "teaser":null},{
+        "title": "Open Research",
+        
+        "excerpt": "open openresearch research source data software opensourcesoftware hardware html access making resources opendata available projects contribute step openaccess why openhardware accessible contributing project process knowledge elements practices practice science researchers useful easy barriers sharing benefits own others self archiving notebooks scholarship openscholarship educational inclusion re publicly benefit documenting freely public articles rate oa summary help work users information code equity diversity citizen further tools outputs impact citation recommended skill level experience versioncontrol steps understand citeable privacy national commercially sensitive running run welcome adding readme guidelines conduct anatomy changes looking closed processes designing hosting design distributing repositories publishing does matter best",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/open_research/open_research.html",
+        "teaser":null},{
+        "title": "Documentation and metadata",
+        
+        "excerpt": "data metadata standards documentation example should fairsharing readme understood describe datasets using brain structure org help file cornell having available cannot table numbers useless headings columns rows contain therefore ensure open include consistent core fully described requires accompanying written clear plain language users sufficient information understand source strengths weaknesses analytical limitations informed decisions level vary according project range needs best practice recognised community easier combined imaging doi rdjt reporting requirements terminologies models schemas searchable variables defined explained dictionaries osf io m bestpractices l dictionary stored logical hierarchical folder structures used helpful others also future cite fuchsdocumentation template app box com",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/rdm/docmetadata.html",
+        "teaser":null},{
+        "title": "The FAIR principles and practices",
+        
+        "excerpt": "data fair principles metadata meta org digital research www fairness should f r relevant community standards also project well where identifier resource accessible open dmp fairsharing management cite defined volume three described include describe necessary protocol making object information software repositories example plan help tools publishers funders disciplines groups define efforts specific alliance rda under improve findability accessibility re support even humans computational interoperate essential velocity variety here using unique persistent clearly registered indexed searchable authentication authorisation need workflows different attributes important not principle types any infrastructure both being reproducible dmponline end although life adopted working organizations reference discipline gofair",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/rdm/fairprinciples.html",
+        "teaser":null},{
+        "title": "Personal Stories",
+        
+        "excerpt": "fair data research org new uk management digital activities www readiness group com discoveries scholarly science researchers susanna assunta sansone co eng ox ac orcid linkedin slideshare susannasansone twitter yes github google scholar since also well service lot principles doi providing products scientific need such software machine where quality better publishing hands play drive tools efforts isa fairsharing rda future case studies personal impact stories author doer lets start footprints discovery biography run oxford university sansonegroup profile sasansone talks net am fairlady susannaasansone yeah code sorry citations user gfjwsiaaaajhl en worked before area even considered told career wrong comment formerly",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/rdm/personalstories.html",
+        "teaser":null},{
+        "title": "Research Data Management",
+        
+        "excerpt": "data research management information project rdm lifecycle others re sharing useful versioncontrol helpful openresearch stored here term digital objects ensures also regularly loss publishing always credit understand fields however thinking any need model follows creation archiving prerequisites recommended skill level following sections handbook provide context complementary chapter prerequisite importance version control open summary covers described reused used generic encompass key part enabling reproducible efficiency workflows greater reach impact become fair findable accessible interoperable reusable should multiple locations backed prevent corruption clearly describing using documentation metadata access enable conditions outlined benefits managing allows ensure quality scientific practice storing properly backing prevents",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/rdm/rdm.html",
+        "teaser":null},{
+        "title": "Resources",
+        
+        "excerpt": "data research plan start management name read want glossary bibliography chapters keep copy going its before sensitive consent sharing not get thats should storage better next open credit further reading uk definitions findable digital object identifier doi checklist different style really love alex provided just kept dont touch raw back somewhere reasonable only decide where stored called needs deleted collecting note collect document everything worst person replying emails sampling frequency channel x nope actually yourself year ago documentation create imagine someone give dataset needed analyse well order job youve dreaming yours try re invent wheel creating crazy new schema format",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/rdm/resources.html",
+        "teaser":null},{
+        "title": "Sharing and archiving data",
+        
+        "excerpt": "data research sharing open possible scientific should only not researchers available org information public re protection share access reasons often openly any need step others repository cite licence used repositories publicly without its example made due able choose also privacy sensitive personal national consent anonymised identification cases provide such archiving significant global transformation digital efficient effective small original practice stored reproduce study prevent progress large collaboration funded results good internet user copy legal technical barriers those itself researcher default closed security value ethical commercial concerns decide shared where accessible redata www fairsharing metadata identifier upload documentation outlined above much include",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/rdm/sharingarchiving.html",
+        "teaser":null},{
+        "title": "Data organisation in spreadsheets",
+        
+        "excerpt": "data spreadsheets not org files its dont file raw values information names research such libreoffice www used horror stories editing analysis avoided calculations only spreadsheet organised read practical avoid ensure cells put cell variable column datacarpentry using microsoft excel open source alternative commonly collect store manipulate analyse share convenient easy tools tasks facilitate reproducibility dynamic documents collection eusprig htm document ways scuppered analyses due unexpected behaviour error prone processes mishaps unique doi s manipulation particular best without version control lead non reproducible workflows opening directly hand example change perform process new obtained properly documented accidentally something type wrong value notice",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/rdm/spreadsheets.html",
+        "teaser":null},{
+        "title": "Storage and backup",
+        
+        "excerpt": "data file files folder storage should structure store also type loss where back recommendations databases fairsharing org folders stored clear based generated github cookiecutter naming names date backup research project often solutions backing frequently provide media sticks cloud using ensure local policies repositories specific create enough dont large chronologically template com good practices set yyyymmdd version v avoid different catastrophic happen prevent picking suitable institutions network drive portable such memory usb risky vulnerable damage provides convenient retrieve check terms before especially handling personal sensitive need option compliant any protection rules bound add additional layer security encrypt devices needed institution might",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/rdm/storagebackup.html",
+        "teaser":null},{
+        "title": "Why reproducibility is important",
+        
+        "excerpt": "results scientific researchers science major reproduced research analysis published easily analyses why reproducibility important media outlets reported www theguardian com aug attempt replicate social findings past decade fails investigations showing significant percentage studies cannot leads academics society losing trust baker working reproducibly means others check even early process thus full methodology transparent evidence strengthened confirmed several independent parts used being available documented valuable saved reproducing build re data code addition called negative helping avoid wasting repeating not return expected dirnagl lauritzen",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reproducibility/01/importantforscience.html",
+        "teaser":null},{
+        "title": "Why you should care",
+        
+        "excerpt": "research our work cite working project reproducibility reproducibly different reproducible researchers easily chapter complete process methods fair others review develop projects publish mozillasciencelab get such aspects scientific track history known provenance information data codes ensure usefulness facilitate workflows encourages test contributions further reviewers access parts validated avoid misinformation analyses begley aac aspect reports efficiently maintain results collaborators recognition underlying guidelines practices continuity build markowetz open openresearch piwowar added advantages previous discussed beneficial community share less obvious individual teams why should care figures reasonsreproducibility png must contain narrative also en wikipedia org wiki planning development includes tools documentation used storing record",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reproducibility/02/whycare.html",
+        "teaser":null},{
+        "title": "Definitions",
+        
+        "excerpt": "same different reproducible reproducibility research replicable analysis data result definitions computational team detailed robust definition claerbout karrenbach following provide results information turing dataset not used science literature another acm authors measurement experiments using study example provided work generalisable answer replication terms both computer experimental setup obtained stated precision measuring system location multiple trials means independent group obtain artifacts independently scientific findings new disciplines terminology org code software implementation details empirical well statistical described steps performed produces qualitatively similar question pipeline written dependent particular open common noted since popular introduced association computing machinery swapped meaning compared table contrasts heroux et al",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reproducibility/03/definitions.html",
+        "teaser":null},{
+        "title": "Resources",
+        
+        "excerpt": "org doi m reproducibility research barba f v figshare chapter next l reproducible markowetz selfish reasons work reproducibly data open reading arxiv j technical journal s piwowar h citation e peerj paper resources checklist exercise define yourself learn good read want start learning hands practices recommend version control bibliography baker scientists lift lid nature terminologies preprint abs claerbout karrenbach electronic documents give new meaning seg program expanded abstracts society exploration geophysicists dirnagl u lauritzen fighting publication bias introducing negative results section cerebral blood flow metabolism jcbfm heroux parashar stodden taufer toward compatible taxonomy computational computing sciences office scientific information osti",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reproducibility/04/resources.html",
+        "teaser":null},{
+        "title": "Reproducibility",
+        
+        "excerpt": "reproducibility definitions turing chapter why research data handbook important science resources reproducible defines code being available fully rerun analysis several discuss detail section however ways definition used team writing useful avoid misunderstandings reading rest lay scientists provide overview common define context prerequisites recommended skill level previous knowledge needed table contents importantforscience should care whycare",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reproducibility/reproducibility.html",
+        "teaser":null},{
+        "title": "Choosing a tool",
+        
+        "excerpt": "th virtual machines software containers tr package management systems system versions td name binder project files run contain computational environments own used environment operating settings easily interacted via required projects ways capture split those only replicate entire reproduced research machine outputs line table tools install specifying shared others fully functioning order specified computer features app within save along associated makes summaryofwaystocapturecomputationalenvironments summary capturing major ones covered chapter pros cons appropriate depend nature broadly into categories its including customised another presented reproducer using creates much graphical gui type result whereas command colspan interaction style tdgraphical tdcommand rowspan tdsoftware thbinder thconda tdentire",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reproducible_environments/01/options.html",
+        "teaser":null},{
+        "title": "Conda",
+        
+        "excerpt": "conda environment package packages name environments version projectone install using example create project scipy pip used not python c installed list installing files new versions easily here also base via remove r yaml systems within later io researcher its note computational however include matplotlib activate env software latest b updated work export machines required system projects miniconda check possible specify delete packagename channel yml different en allows users any separate own those old need extremely being creating admin privileges working very common such changes making languages instructions repo continuum installer bit minicondaversionnumber sh run successfully should commonly just start command",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reproducible_environments/02/package-management.html",
+        "teaser":null},{
+        "title": "YAML",
+        
+        "excerpt": "yaml files name computational value string unquoted environments python strings not indentation language easy because discussed environment linux version here following scalars also colon characters generate both read simplicity programming defining well travis file define operating xenial package numpy packages note syntax elements values quoted lists dictionaries collections qui gon jinn obi wan kenobi space special parsing let me put oops quote tabs spaces source written packagemanagementsystems manually systems conda yamlfiles based markup aims projects configuration its readability good support languages used great things including integrated ci org chapter continuous integration might something system os distribution dist comments added preceding",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reproducible_environments/03/yaml.html",
+        "teaser":null},{
+        "title": "Binder",
+        
+        "excerpt": "binder project environment file files mybinder org used github data computational r version name step txt python repository example specify install package not here run such link build public management specified image figures png include generated discussed share where create configuration binderhub code binderized researcher notebooks publicly available copy installed section repositories should apt requirements numpy launch few yml possible others new same based included contains users via web browser below steps creating anyone note does projects case jupyter well clicking click person interact also any list html default specific automatically latex read nix packages need com description chapter into",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reproducible_environments/04/binder.html",
+        "teaser":null},{
+        "title": "Virtual machines",
+        
+        "excerpt": "virtual machine vm name vms virtualbox machines file left system start version click top run running using software www figures png research researcher work own export operating org any once just settings analysis select whole computer example figure below windows note ubuntu called create several memory because should virtualmachine download install tool sharing reproducible requires changes project impact described python updated features only put risk another shared single files import setting new created vmcreatemachine access green arrow vmstartmachine vmexportmachine virtualmachines whatarevirtualmachines essentially package app shows laptop search button lower corner terminal outputting host vagrant vagrantup com user probably guess having",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reproducible_environments/05/virtual-machines.html",
+        "teaser":null},{
+        "title": "Containers",
+        
+        "excerpt": "docker container image run images containers singularity files project sudo used file dockerfile directory example using commands work com name build machine ubuntu install not within command software also working hub need version building into docs imagename b only same environment system hpc running copy any packages via different systems recipe here apt opened root volumes volume being open www dockerfiles since user terminal containerid new called workdir r reproducible such research just its does should process security include built png few get base after develop io access lolcow even size installed package required makes generate writing users where tag",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reproducible_environments/06/containers.html",
+        "teaser":null},{
+        "title": "Checklist",
+        
+        "excerpt": "computational environment checklist name choose appropriate method project capturing capture share captured along results analysis",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reproducible_environments/07/checklist.html",
+        "teaser":null},{
+        "title": "Resources",
+        
+        "excerpt": "binder com github org cc docker materials section blob master files zero chapter containers environment computational system software package attribution name used www article md license build research docs versions computer its operating conda management including virtual yaml creative commons international opensource sa tutorial bsd clause examples requirements io workshop reading continuous integration contains further information projects installed packages encapsulate entire customised settings bibliography environments reproducibility future systems paper presenting singularity journals plos plosone id journal pone universal managers sharealike apache opendreamkit granted turing machines copyright resources carpentry geohackweek whattolearnnext learn next recommend testing note version control prerequisite open also",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reproducible_environments/08/resources.html",
+        "teaser":null},{
+        "title": "Reproducible Environments",
+        
+        "excerpt": "containers computational binder virtual environment environments research software machines yaml package management files python project its system analysis results reproducible version using summary options code different run outline packages resources such script researchers experience command line org via useful why capture installing define issues step public images checklist name computer installed versions features any captured numbers often three changes simple impact scholarly recommended skill level programminghistorian en lessons intro bash versioncontrol helpful github bindersection working whatisacomputationalenvironment help howthiswillhelpyouwhythisisuseful systems conda scalars disambiguation generate including data machine sharing docker commands workdir singularity volumes bibliography operating describe able same dependent must chapter",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reproducible_environments/reproducible_environments.html",
+        "teaser":null},{
+        "title": "Research Compendia",
+        
+        "excerpt": "research compendium project data used folder should reproducible structure paper files compendia output version helpful components code basic figures others not readme r create such results into done executable principles methods environment md examples peer glossary control publish digital chapter elements only computational publication description three text csv contains makefile dataclean dataraw datapackage json read human generated think good science review next resources prerequisites recommended versioncontrol open openresearch part environments reproducibleenvironments binder binderhub reproducibility collection parts including reproducing cite together main why combines work publishing allows analysis executed give ways using contain conventional clearly possible start file described dockerfile generate",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/research_compendia/research_compendia.html",
+        "teaser":null},{
+        "title": "How this will help you and why this is useful",
+        
+        "excerpt": "code review documentation changes testing proposed project name style help also bugs errors should codequality practice software before however catch kinds second ensure provides members team key objective those base projects elementary process trunk tests does important not enough where future health providing perspective section here pair eyes whether purpose information user readable enforce coding standards pep google services quality provide group cohesion peer reviews newcomers why useful remove mistakes bad made enter master direct indirect benefits discussed below catchingbugsandelementaryerrors catching simple into shares aspects robust programme reduce importance identifying straightforward makes stage principle function restricted trivial typos act line",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reviewing/01/how_helpful.html",
+        "teaser":null},{
+        "title": "Best Practice",
+        
+        "excerpt": "review code process project coder projects good reviewers reviewer reviews comments collaborative between preferences where not typically practice name avoid might crucial changes small help development individual likely within nice always any youre dont work better being subjective should possible however suggestions agree specify optional want begin peer theyre once parties its discussion under chunks reviewing lot mistakes much lead scale rules balance group workload very staff best benice open source enterprises internet etiquette makes whole smoothly perhaps importantly assume faith both sides interaction constructive principles true beyond almost aspect since necessarily involves criticism potentially complete strangers waste listen telling",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reviewing/02/best_practice.html",
+        "teaser":null},{
+        "title": "Typical Workflows",
+        
+        "excerpt": "review code project reviewer github name formal once request informal process its pull merge workflows even coder complete merged before projects required should comments comment typical behind within environment indeed versioncontrol occurs between where contribution into discussion made pr sure documentation standards continuousintegration create style codequality check changes line consensus cases final particular reference formalvsinformalreviews vs reviews section focuses commonly implemented social coding however bears stating very valuable including ad hoc approaches kind shoulder peer form key preliminary component highly formalised pipelines saving lot stress arguing stage begins forksandbranches forks branches work effectively imperative using good version control step points",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reviewing/03/typical_workflows.html",
+        "teaser":null},{
+        "title": "Checklists, what to learn next and bibliography",
+        
+        "excerpt": "code tests name changes coder review any ci complete check lorem ipsum materials used reviewer new style necessary comments format checklists following both project standards documentation locally request once clear logic approach learn good continuousintegration definitions help bibliography licensing details here presents possible part formal process forthecoder does meet particular material pass declared guides rest base still passing create pull wait checks consult reports builds formally discuss record made against appropriate knows believe fully addressed forthereviewer meets basic not automatically checked read carefully easily understood chanuki notes added emphaise importance readbilty sections proposed actually ensure robust its intended bugs defects",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reviewing/04/checklists_bib.html",
+        "teaser":null},{
+        "title": "Reviewing",
+        
+        "excerpt": "code review also testing versioncontrol github com summary tests new approaches practices projects even project example very gitlab reviewing prerequisite importance notes version control necessary understanding arranges its branches forks pull requests within repositories needed name provides additional quality instead relying simply original author puts together themselves gets another programmer assess goal point strengths potential areas improvement often done pairs reviewer having reviewed partner doing help programmers discuss issues alternative tasks learn tips tricks means particularly well suited contributor making changes where working different parts nonetheless smallest scale harness creative management because nature reviews act qualitative rather quantitive less valuable",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/reviewing/reviewing.html",
+        "teaser":null},{
+        "title": "Long Read on Risk Assessment",
+        
+        "excerpt": "software risk complexity impact using case richard jobs wrong things work sustainable going submit few sometimes theyre coffee different assessment matrix needs therefore decides script get piece control documentation being jemma library seth measuring however take formal ensure too approach whats studies wants pauses seconds only run version right line later same into s project problem data together agrees results might change measure count counting used blobs broad view paper good longer read assessments procedures activity safe thought moment bus coming described below really help successful very popular quantifying youre interested axis measures exposure mishap further origin safeguards needed acceptable",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/risk_assessment/01/longreadriskassessment.html",
+        "teaser":null},{
+        "title": "Summary",
+        
+        "excerpt": "concepts next used tools read learn checklist maybe here chapters top resources definitions glossary summary understand software knowing helps decide sustainability appropriate needs ecosystems commonly help practice github docker done end separate exercise please note things recommended good step further reading topic werent licensed include above already own box bold less relevant favourite case someone wants dig into detail link copy key readers should aware get chapter bibliography credit urls any materials form part text",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/risk_assessment/02/finalsummary.html",
+        "teaser":null},{
+        "title": "Risk Assessment",
+        
+        "excerpt": "risk software too assessment help jobs sustainable wont get few seconds matrix impact case needs submit choose appropriate concepts project little unsustainable much able take just gets off right foot theyre whats complexity richard writing deciding manage tldr longer read assessments sometimes formal procedures ensure activity safe thought moment coffee bus coming different using approach described below really work successful very popular quantifying going youre interested axis measures exposure mishap further origin safeguards needed acceptable vs figures riskmatrix png our axes studies illustrate works small department cluster names varying according simple pattern tedious wants outside play therefore decides short shell",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/risk_assessment/risk_assessment.html",
+        "teaser":null},{
+        "title": "Testing",
+        
+        "excerpt": "tests testing code test unit run integration software not system name random example regression should any level program result b tested used units also where numbers different output check data com very c piece because project error development bug cases work its continuous function expected creative commons license good written another such outputs attribution research writing possible x smoke before print individual coverage does researcher process much within correct adult materials why results difficult acceptance after running easier www between only end age child noncommercial point runtime driven checks done suite fail problem bugs levels useful ensure researchers however functions",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/testing/testing.html",
+        "teaser":null},{
+        "title": "Version Control",
+        
+        "excerpt": "git changes version project commit files branch merge work control github branches repository add not code file com commits into versions also pull should master using made good working want new any features person via request license used past example such conflicts attribution practice different copy need push between online messages commons projects collaborators compare making create just only checkout diff include origin creative merging others issues run staging area message clone possible chapter great often why same directory b branchname hello world sharealike line entire available allows figures where solution back get computer doing once here problem switch log",
+        "categories": [],
+        "tags": [],
+        "url": "https://the-turing-way.netlify.com/version_control/version_control.html",
+        "teaser":null},]
+</script>
+            </div>
+            <div class="c-textbook__footer" id="textbook_footer">
+              
+<nav class="c-page__nav">
+  
+
+  
+</nav>
+
+              <footer>
+  <p class="footer">This page was created by <a href="https://github.com/alan-turing-institute/the-turing-way#contributors">The Turing Way Community</a></p>
+</footer>
+
+            </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

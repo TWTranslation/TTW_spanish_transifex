@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Binder</title>
+  <meta name="description" content="        Binder    Binder Now that we've seen how to use and capture the computational environment used in a Python project, it's time to think about how to s...">
+
+  <link rel="canonical" href="https://the-turing-way.netlify.com//es/reproducible_environments/04/binder.html">
+  <link rel="alternate" type="application/rss+xml" title="The Turing Way" href="https://the-turing-way.netlify.com//feed.xml">
+
+  <meta property="og:url"         content="https://the-turing-way.netlify.com//es/reproducible_environments/04/binder.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Binder" />
+<meta property="og:description" content="        Binder    Binder Now that we've seen how to use and capture the computational environment used in a Python project, it's time to think about how to s..." />
+<meta property="og:image"       content="https://the-turing-way.netlify.com/" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://the-turing-way.netlify.com//es/reproducible_environments/04/binder.html",
+  "headline": "Binder",
+  "datePublished": "2022-03-30T16:46:28+01:00",
+  "dateModified": "2022-03-30T16:46:28+01:00",
+  "description": "        Binder    Binder Now that we've seen how to use and capture the computational environment used in a Python project, it's time to think about how to s...",
+  "author": {
+    "@type": "Person",
+    "name": "Kirstie Whitaker"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://the-turing-way.netlify.com/",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://the-turing-way.netlify.com/",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    },
+    
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/assets/js/page/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/assets/js/page/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/assets/js/page/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+<!-- Display Thebelab button in each code cell -->
+<script>
+/**
+ * Set up thebelab button for code blocks
+ */
+
+const thebelabCellButton = id =>
+  `<a id="thebelab-cell-button-${id}" class="btn thebebtn o-tooltip--left" data-tooltip="Interactive Mode">
+    <img src="/assets/images/edit-button.svg" alt="Start thebelab interactive mode">
+  </a>`
+
+
+const addThebelabButtonToCodeCells =  () => {
+
+  const codeCells = document.querySelectorAll('div.input_area > div.highlight:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.getElementById("thebelab-cell-button-" + id) == null) {
+      codeCell.insertAdjacentHTML('afterend', thebelabCellButton(id));
+    }
+  })
+}
+
+initFunction(addThebelabButtonToCodeCells);
+</script>
+
+
+<script src="https://unpkg.com/thebelab@latest/lib/index.js" async></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+
+                // Clean up the language to make it work w/ CodeMirror and add it to the cell
+                dataLanguage = ""
+                dataLanguage = detectLanguage(dataLanguage);
+                codeCell.setAttribute('data-language', dataLanguage)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyAndThebeButtons = document.querySelectorAll('.copybtn, .thebebtn')
+            copyAndThebeButtons.forEach((button, index) => {
+                button.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+
+            // Find any cells with an initialization tag and ask ThebeLab to run them when ready
+            var thebeInitCells = document.querySelectorAll('div.tag_thebelab-init');
+            thebeInitCells.forEach((cell) => {
+                console.log("Initializing ThebeLab with cell: " + cell.id);
+                cell.querySelector('.thebelab-run-button').click();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButtons = document.querySelectorAll('[id^=thebelab], [id$=thebelab]')
+        thebelabButtons.forEach((thebelabButton,index) => {
+            if (thebelabButton === null) {
+                setTimeout(initThebelab, 250)
+                return
+            };
+            thebelabButton.addEventListener('click', addThebelabToCodeCells);
+        });
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+
+// Helper function to munge the language name
+var detectLanguage = (language) => {
+    if (language.indexOf('python') > -1) {
+        language = "python";
+    }
+    return language;
+}
+</script>
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.8.1/tocbot.min.js" async></script>
+  <script src="/assets/js/page/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/assets/js/page/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/assets/js/page/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/assets/css/styles.css",
+        style: "#textbook_content {padding-top: 40px};",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList,
+        documentTitle: "Made with Jupyter Book"
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- Include the ThebeLab config so it gets reloaded on each page -->
+    <script type="text/x-thebe-config">{
+    requestKernel: true,
+    binderOptions: {
+    repo: "alan-turing-institute/the-turing-way-book",
+    ref: "master",
+    },
+    codeMirrorConfig: {
+    theme: "abcdef",
+    mode: "python"
+    },
+    kernelOptions: {
+    kernelName: "python3",
+    path: ""
+    }
+}
+</script>
+
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://github.com/alan-turing-institute/the-turing-way/"><img src="" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">The Turing Way</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/es/introduction/introduction">
+        <a class="c-sidebar__entry"
+          href="/es/introduction/introduction.html"
+        >
+          
+            1.
+          
+          Introduction
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/es/reproducibility/reproducibility">
+        <a class="c-sidebar__entry"
+          href="/es/reproducibility/reproducibility.html"
+        >
+          
+            2.
+          
+          Reproducibility
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reproducibility/01/importantforscience">
+              <a class="c-sidebar__entry"
+                href="/es/reproducibility/01/importantforscience.html"
+              >
+                
+                  2.1
+                
+                Why reproducibility is important
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reproducibility/02/whycare">
+              <a class="c-sidebar__entry"
+                href="/es/reproducibility/02/whycare.html"
+              >
+                
+                  2.2
+                
+                Why you should care
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reproducibility/03/definitions">
+              <a class="c-sidebar__entry"
+                href="/es/reproducibility/03/definitions.html"
+              >
+                
+                  2.3
+                
+                Definitions
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reproducibility/04/resources">
+              <a class="c-sidebar__entry"
+                href="/es/reproducibility/04/resources.html"
+              >
+                
+                  2.4
+                
+                Resources
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/es/open_research/open_research">
+        <a class="c-sidebar__entry"
+          href="/es/open_research/open_research.html"
+        >
+          
+            3.
+          
+          Open Research
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/open_research/01/opendata">
+              <a class="c-sidebar__entry"
+                href="/es/open_research/01/opendata.html"
+              >
+                
+                  3.1
+                
+                Open data
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/open_research/02/opensourcesoftware">
+              <a class="c-sidebar__entry"
+                href="/es/open_research/02/opensourcesoftware.html"
+              >
+                
+                  3.2
+                
+                Open source software
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/open_research/03/openhardware">
+              <a class="c-sidebar__entry"
+                href="/es/open_research/03/openhardware.html"
+              >
+                
+                  3.3
+                
+                Open hardware
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/open_research/04/openaccess">
+              <a class="c-sidebar__entry"
+                href="/es/open_research/04/openaccess.html"
+              >
+                
+                  3.4
+                
+                Open access
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/open_research/05/opennotebooks">
+              <a class="c-sidebar__entry"
+                href="/es/open_research/05/opennotebooks.html"
+              >
+                
+                  3.5
+                
+                Open notebooks
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/open_research/06/openscholarship">
+              <a class="c-sidebar__entry"
+                href="/es/open_research/06/openscholarship.html"
+              >
+                
+                  3.6
+                
+                Open scholarship
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/open_research/07/resources">
+              <a class="c-sidebar__entry"
+                href="/es/open_research/07/resources.html"
+              >
+                
+                  3.7
+                
+                Resources
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/es/version_control/version_control">
+        <a class="c-sidebar__entry"
+          href="/es/version_control/version_control.html"
+        >
+          
+            4.
+          
+          Version Control
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/es/collaborating_github/collaborating_github">
+        <a class="c-sidebar__entry"
+          href="/es/collaborating_github/collaborating_github.html"
+        >
+          
+            5.
+          
+          Collaborating on GitHub/GitLab
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/collaborating_github/1/readme_communication">
+              <a class="c-sidebar__entry"
+                href="/es/collaborating_github/1/readme_communication.html"
+              >
+                
+                  5.1
+                
+                README and Project Communication
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/collaborating_github/2/roadmapping">
+              <a class="c-sidebar__entry"
+                href="/es/collaborating_github/2/roadmapping.html"
+              >
+                
+                  5.2
+                
+                Roadmapping
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/collaborating_github/3/getting_contributors">
+              <a class="c-sidebar__entry"
+                href="/es/collaborating_github/3/getting_contributors.html"
+              >
+                
+                  5.3
+                
+                Getting Contributors
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/collaborating_github/4/checklist_bibliography">
+              <a class="c-sidebar__entry"
+                href="/es/collaborating_github/4/checklist_bibliography.html"
+              >
+                
+                  5.4
+                
+                Checklist and Bibliography
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/es/credit/credit">
+        <a class="c-sidebar__entry"
+          href="/es/credit/credit.html"
+        >
+          
+            6.
+          
+          Credit for reproducible research
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/es/rdm/rdm">
+        <a class="c-sidebar__entry"
+          href="/es/rdm/rdm.html"
+        >
+          
+            7.
+          
+          Research Data Management
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/es/reproducible_environments/reproducible_environments">
+        <a class="c-sidebar__entry"
+          href="/es/reproducible_environments/reproducible_environments.html"
+        >
+          
+            8.
+          
+          Reproducible Environments
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reproducible_environments/01/options">
+              <a class="c-sidebar__entry"
+                href="/es/reproducible_environments/01/options.html"
+              >
+                
+                  8.1
+                
+                Choosing a tool
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reproducible_environments/02/package-management">
+              <a class="c-sidebar__entry"
+                href="/es/reproducible_environments/02/package-management.html"
+              >
+                
+                  8.2
+                
+                Conda
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reproducible_environments/03/yaml">
+              <a class="c-sidebar__entry"
+                href="/es/reproducible_environments/03/yaml.html"
+              >
+                
+                  8.3
+                
+                YAML
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reproducible_environments/04/binder">
+              <a class="c-sidebar__entry"
+                href="/es/reproducible_environments/04/binder.html"
+              >
+                
+                  8.4
+                
+                Binder
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reproducible_environments/05/virtual-machines">
+              <a class="c-sidebar__entry"
+                href="/es/reproducible_environments/05/virtual-machines.html"
+              >
+                
+                  8.5
+                
+                Virtual machines
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reproducible_environments/06/containers">
+              <a class="c-sidebar__entry"
+                href="/es/reproducible_environments/06/containers.html"
+              >
+                
+                  8.6
+                
+                Containers
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reproducible_environments/07/checklist">
+              <a class="c-sidebar__entry"
+                href="/es/reproducible_environments/07/checklist.html"
+              >
+                
+                  8.7
+                
+                Checklist
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reproducible_environments/08/resources">
+              <a class="c-sidebar__entry"
+                href="/es/reproducible_environments/08/resources.html"
+              >
+                
+                  8.8
+                
+                Resources
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/es/testing/testing">
+        <a class="c-sidebar__entry"
+          href="/es/testing/testing.html"
+        >
+          
+            9.
+          
+          Testing
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/es/reviewing/reviewing">
+        <a class="c-sidebar__entry"
+          href="/es/reviewing/reviewing.html"
+        >
+          
+            10.
+          
+          Reviewing
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reviewing/01/how_helpful">
+              <a class="c-sidebar__entry"
+                href="/es/reviewing/01/how_helpful.html"
+              >
+                
+                  10.1
+                
+                How this will help you and why this is useful
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reviewing/02/best_practice">
+              <a class="c-sidebar__entry"
+                href="/es/reviewing/02/best_practice.html"
+              >
+                
+                  10.2
+                
+                Best Practice
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reviewing/03/typical_workflows">
+              <a class="c-sidebar__entry"
+                href="/es/reviewing/03/typical_workflows.html"
+              >
+                
+                  10.3
+                
+                Typical Workflows
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/reviewing/04/checklists_bib">
+              <a class="c-sidebar__entry"
+                href="/es/reviewing/04/checklists_bib.html"
+              >
+                
+                  10.4
+                
+                Checklists, what to learn next and bibliography
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/es/continuous_integration/continuous_integration">
+        <a class="c-sidebar__entry"
+          href="/es/continuous_integration/continuous_integration.html"
+        >
+          
+            11.
+          
+          Continuous Integration
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/es/make/make">
+        <a class="c-sidebar__entry"
+          href="/es/make/make.html"
+        >
+          
+            12.
+          
+          Reproducible Research with Make
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/es/risk_assessment/risk_assessment">
+        <a class="c-sidebar__entry"
+          href="/es/risk_assessment/risk_assessment.html"
+        >
+          
+            13.
+          
+          Risk Assessment
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections u-hidden-visually">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/risk_assessment/01/longreadriskassessment">
+              <a class="c-sidebar__entry"
+                href="/es/risk_assessment/01/longreadriskassessment.html"
+              >
+                
+                  13.1
+                
+                Long Read on Risk Assessment
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/es/risk_assessment/02/finalsummary">
+              <a class="c-sidebar__entry"
+                href="/es/risk_assessment/02/finalsummary.html"
+              >
+                
+                  13.2
+                
+                Summary
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/es/binderhub/binderhub">
+        <a class="c-sidebar__entry"
+          href="/es/binderhub/binderhub.html"
+        >
+          
+            14.
+          
+          BinderHub
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/es/glossary/glossary">
+        <a class="c-sidebar__entry"
+          href="/es/glossary/glossary.html"
+        >
+          
+            15.
+          
+          Glossary
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button"><img src="/assets/images/download-solid.svg" alt="Download" /></button>
+    <div class="download-buttons">
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
+    </div>
+</div>
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><img src="/assets/images/list-solid.svg" alt="Search" />   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/search.html" class="topbar-right-button" id="search-button">
+    <img src="/assets/images/search-solid.svg" alt="Search" />
+  </a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+                  <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Binder</div>
+</div>
+    
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a name="Binder_section"></a></p>
+<h2 id="Binder">Binder<a class="anchor-link" href="#Binder"> </a></h2><p>Now that we've seen how to use and capture the computational environment used in a Python project, it's time to think about how to share that environment.</p>
+<p>With an <code>environment.yml</code> file (or similar from alternative package management systems), it is possible for others to recreate the environment specified by that file. However, this relies on the new user having the same package management system set up, and knowing how to use it. It would be far easier if there was an automated solution to recreate the computational environment - and this is where Binder comes in.</p>
+<p>Binder uses a tool called repo2docker to create a Docker image of a project based on the configuration files that are included. The resulting image contains the project and the computational environment specified by the original user. Other users can access the image via a cloud-based BinderHub, which allows them to view, edit and run the code from their web browser.</p>
+<p>Juliette Taka's excellent cartoon below illustrates the steps in creating and sharing a "binderized" project.</p>
+<p><strong>Step 1:</strong> We start with a researcher who has completed a project and wants to share her work with anyone, regardless of their computational environment. Note that Binder does not only have to be applied to finished projects; it can be used in exactly the same way to share projects that are in progress.</p>
+<p><strong>Step 2:</strong> The researcher's project contains many files of different types. In this case the researcher has been working in Jupyter notebooks, but Binder can be used just as effectively with many other file formats and languages which we'll cover in more detail shortly.</p>
+<p><strong>Step 3:</strong> The researcher uploads her code to a publicly available repository hosting service, such as GitHub, where it can be accessed by others. She includes a file describing the computational environment required to run the project.</p>
+<p><strong>Step 4:</strong> She generates a link at the <a href="https://mybinder.org">mybinder.org</a> BinderHub. By clicking on this link anyone can access a "Binderized" version of her project. The click triggers repo2docker to build an Docker image based on the contents of the repository and its configuration files. This image is then hosted on the cloud. The person who clicked the link will be taken to a copy of her project in their web browser that they can interact with. This copy of the project they interact with is hosted in the environment the researcher specified in step 3, regardless of the computational environment of the person is accessing it from.</p>
+<p><img src="../../figures/binder_comic.png" alt="binder_comic"></p>
+<p>Figure credit: <a href="https://opendreamkit.org/2017/11/02/use-case-publishing-reproducible-notebooks/">Juliette Taka, Logilab and the OpenDreamKit project</a></p>
+<p>To get an idea of what this looks like here's what a binder of a simple example project looks like. Files are listed and can be clicked on and modified by the person accessing the binder.</p>
+<p><img src="../../figures/binder_home.png" alt="binder_home"></p>
+<p>Users can also open terminals to run or otherwise interact with the files by clicking on "New" and then "Terminal" in the top right of the home binder screen shown above. Here this is used to run the analysis script in the example binder which performs a linear regression on some data:</p>
+<p><img src="../../figures/binder_terminal.png" alt="binder_terminal"></p>
+<p>As mentioned Binder is well integrated with Jupyter notebooks which can be opened by clicking on "New" and then under "Notebook" in the same way terminals can be opened. These may be more convenient for those working with graphical outputs, as shown here where one is used to run <code>make_plot.py</code> in the example Binder:</p>
+<p><img src="../../figures/binder_notebook.png" alt="binder_notebook"></p>
+<p>If R is installed in a Binder the dropdown menu will show the options to open R Jupyter notebooks and RStudio sessions in the Binder.</p>
+<p><a name="Disambiguation"></a></p>
+<h3 id="Disambiguation">Disambiguation<a class="anchor-link" href="#Disambiguation"> </a></h3><p>In this section there are a number of related terms, which will be outlined here for clarity:</p>
+<ul>
+<li>Binder: A sharable version of a project that can be viewed and interacted within a reproducible computational environment via a web browser.</li>
+<li>BinderHub: A service which generates Binders. The most widely-used is <a href="https://mybinder.org">mybinder.org</a>, which is maintained by the Binder team. It is possible to create other BinderHubs which can support more specialised configurations. One such configuration could include authentication to enable private repositories to be shared amongst close collaborators.</li>
+<li><a href="https://mybinder.org">mybinder.org</a>: A public and free BinderHub. Because it is public you should not use it if your project requires any personal or sensitive information (such as passwords).</li>
+<li>Binderize: To make a Binder of a project.</li>
+</ul>
+<p><a name="Creating_a_binder_for_a_project"></a></p>
+<h3 id="Creating-a-Binder-for-a-project">Creating a Binder for a project<a class="anchor-link" href="#Creating-a-Binder-for-a-project"> </a></h3><p>Creating a Binderized version of a project involves three key steps which will be explained in this section:</p>
+<ol>
+<li>Specify the computational environment</li>
+<li>Put the project files somewhere publicly available (we will describe how to do this with GitHub)</li>
+<li>Generate a link to a Binder of the project</li>
+</ol>
+<p>For a list of sample repositories for use with Binder, see the <a href="https://mybinder.readthedocs.io/en/latest/sample_repos.html">Sample Binder Repositories</a> page.</p>
+<p><a name="Step_1_Specify_your_computational_environment"></a></p>
+<h4 id="Step-1:-Specify-your-computational-environment">Step 1: Specify your computational environment<a class="anchor-link" href="#Step-1:-Specify-your-computational-environment"> </a></h4><p>If a project contains no file specifying the computational environment when a Binder is generated the environment will be the Binder default environment, (containing Python 3.6) which may or may not be suitable for the project. However if it does contain a configuration file for the environment then the Binder will be generated with the specified environment. A full list of such files Binder accepts with examples can be found <a href="https://mybinder.readthedocs.io/en/latest/config_files.html">here</a>, but here are some of the key ones, some of which are language-specific:</p>
+<ul>
+<li>environment.yml<ul>
+<li>Recall that environment.yml files were discussed in the <a href="#Package_management_systems">Package management systems</a> section.</li>
+</ul>
+</li>
+<li>Dockerfile<ul>
+<li>Dockerfiles will be discussed in the <a href="#Containers_section">Containers</a> section, so will not be discussed further here.</li>
+</ul>
+</li>
+<li>apt.txt<ul>
+<li>Dependencies that would typically installed via commands such as <code>sudo apt-get install package_name</code> should be listed in an apt.txt file, and will be automatically installed in the Binder.</li>
+<li>For example if a project uses Latex the apt.txt file should read
+<pre><code>texlive-latex-base</code></pre>
+to install the base Latex package.</li>
+</ul>
+</li>
+<li>default.nix<ul>
+<li>For those that use the <a href="#Package_management_systems">package management system</a> Nix a default.nix file can be a convenient way to capture their environment.</li>
+</ul>
+</li>
+<li>requirements.txt (Python)<ul>
+<li>For Python users a requirements.txt file can be used to list dependent packages.</li>
+<li>For example to have Binder install numpy this file would simply need to read:
+<pre><code>numpy</code></pre>
+</li>
+<li>Specific package version can also be specified using an <code>==</code>, for example to have Binder install numpy version 1.14.5 then the file would be
+<pre><code>numpy==1.14.5</code></pre>
+</li>
+<li>The requirement.txt file does not need to be hand written. Running the command <code>pip freeze &gt; requirements.txt</code> will output a requirements.txt file that fully defines the Python environment.</li>
+</ul>
+</li>
+<li>runtime.txt<ul>
+<li>Used to specify a particular version of Python of R for the Binder to use.</li>
+<li>To specify which version of R to use specify find the date it was captured on <a href="https://mran.microsoft.com/documents/rro/reproducibility">MRAN</a> and include it in the runtime.txt file as
+<pre><code>r-&lt;YYYY&gt;-&lt;MM&gt;-&lt;DD&gt;</code></pre>
+</li>
+<li>To specify a version of Python, similarly state the version in this file. For example to use Python 2.7 the file would need to read
+<pre><code>python-2.7</code></pre>
+</li>
+</ul>
+</li>
+<li>install.R or DESCRIPTION (R/RStudio)<ul>
+<li>An install.R file lists the packages to be installed, for example to install the package tibble in the Binder:
+<pre><code>install.packages("tibble")</code></pre>
+</li>
+<li><a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html#The-DESCRIPTION-file">DESCRIPTION files</a> are more typically used in the R community for dependency management.</li>
+</ul>
+</li>
+</ul>
+<p><a name="Step_2_Put_your_code_on_GitHub"></a></p>
+<h4 id="Step-2:-Put-your-code-on-GitHub">Step 2: Put your code on GitHub<a class="anchor-link" href="#Step-2:-Put-your-code-on-GitHub"> </a></h4><p>GitHub is discussed at length in the chapter on version control, which you should refer to if you wish to understand more about this step. In this chapter we will give the briefest possible explanation. GitHub is a very widely used platform where you can make "repositories", and upload code, documentation, or any other files into them. To complete this step:</p>
+<ol>
+<li>Make an account on <a href="https://github.com/">GitHub</a>.</li>
+<li>Create a repository for the project you wish to make a Binder of.</li>
+<li>Upload your project files (including the file you have created to specify your computational environment) to the repository and save ("commit" in the vocabulary of GitHub) them there.</li>
+</ol>
+<p>Again, if you are unable to complete these steps refer to the chapter on version control for a fuller explanation.</p>
+<p><a name="Step_3_Generate_a_link_to_a_Binder_of_your_project"></a></p>
+<h4 id="Step-3:-Generate-a-link-to-a-Binder-of-your-project">Step 3: Generate a link to a Binder of your project<a class="anchor-link" href="#Step-3:-Generate-a-link-to-a-Binder-of-your-project"> </a></h4><p>Head to <a href="https://mybinder.org">https://mybinder.org</a>. You'll see a form that asks you to specify a repository for <a href="https://mybinder.org">mybinder.org</a> to build. In the first field, paste the URL of the project's GitHub repository. It'll look something like this: <code>https://github.com/&lt;your-username&gt;/&lt;your-repository&gt;</code></p>
+<p><img src="../../figures/mybinder_gen_link.png" alt="mybinder_gen_link"></p>
+<p>As you can see there are additional fields in this form, but these are optional are will not be discussed here.</p>
+<p>Once the URL to the project to be Binderized is supplied two fields will be automatically populated on the screen depicted above:</p>
+<ul>
+<li>The "Copy the URL below and share your Binder with others" field, which provides a link to the Binder which can be copied and shared by you.</li>
+<li>The "Copy the text below, then paste into your README to show a binder badge" field, which as described can be included by you in GitHub to create a button that allows anyone that accesses your project on GitHub to launch the Binder.</li>
+</ul>
+<p>Finally, click the launch button. This will ask <a href="https://mybinder.org">mybinder.org</a> to build the environment needed to run the project, note that this may take several minutes. You can click on the "Build logs" button to see the logs generated by the build process. These logs are helpful for resolving any issues that cause the build to fail, such as errors in the file defining the computational environment to be generated.</p>
+<p>Once it has been built the Binder will be automatically launched, again this may take some time.</p>
+<p><a name="Including_data_in_a_Binder"></a></p>
+<h3 id="Including-data-in-a-Binder">Including data in a Binder<a class="anchor-link" href="#Including-data-in-a-Binder"> </a></h3><p>There are a few ways to make data available in your Binder. Which is the best one depends on how big your data is and your preferences for sharing data. Note that the more data that is included include the longer it will take for a Binder to launch. Data also takes up storage space which must be paid for, so it is good to be considerate and minimise the data you include, especially on the publicly provided <a href="https://mybinder.org">mybinder.org</a>.</p>
+<p><a name="Small_public_files"></a></p>
+<h4 id="Small-public-files">Small public files<a class="anchor-link" href="#Small-public-files"> </a></h4><p>The simplest approach for small data files that are public is to add them directly to your GitHub repository, i.e to include them along with the rest of your project files in the Binder. This works well and is reasonable for files with sizes up to maybe 10MB.</p>
+<p><a name="Medium_public_files"></a></p>
+<h4 id="Medium-public-files">Medium public files<a class="anchor-link" href="#Medium-public-files"> </a></h4><p>For medium sized files, a few 10s of megabytes to a few hundred megabytes, find some other place online to store them and make sure they are publicly available. Then add a file named postBuild (which is a shell script so the first line must be <code>#!/bin/bash</code>) to your project files. In the postBuild file add a single line reading <code>wget -q -O name_of_your_file link_to_your_file</code>.</p>
+<p>The postBuild file is used to execute commands when the files to produce the Binder are being generated. In this case it can be used to download your data into the files used to launch the binder.</p>
+<p><a name="Large_public_files"></a></p>
+<h4 id="Large-public-files">Large public files<a class="anchor-link" href="#Large-public-files"> </a></h4><p>The best option for large files is to use a library specific to the data format to stream the data as you are using it. There are a few restrictions on outgoing traffic from your Binder that are imposed by the team operating <a href="https://mybinder.org">mybinder.org</a>. Currently only connections to HTTP and Git are allowed. This comes up when people want to use FTP sites to fetch data. For security reasons FTP is not allowed on <a href="https://mybinder.org">mybinder.org</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
+            </div>
+            <div class="c-textbook__footer" id="textbook_footer">
+              
+<nav class="c-page__nav">
+  
+    
+    
+
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/es/reproducible_environments/03/yaml.html">
+      〈 <span class="u-margin-right-tiny"></span> YAML
+    </a>
+  
+
+  
+    
+
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/es/reproducible_environments/05/virtual-machines.html">
+      Virtual machines <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+              <footer>
+  <p class="footer">This page was created by <a href="https://github.com/alan-turing-institute/the-turing-way#contributors">The Turing Way Community</a></p>
+</footer>
+
+            </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
