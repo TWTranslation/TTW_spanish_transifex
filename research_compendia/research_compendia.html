@@ -1,0 +1,174 @@
+---
+redirect_from:
+  - "/research-compendia/research-compendia"
+title: |-
+  Research Compendia
+pagenum: 50
+prev_page:
+  url: /make/make.html
+next_page:
+  url: /risk_assessment/risk_assessment.html
+suffix: .md
+search: research compendium project data used folder should reproducible structure paper files compendia output version helpful components code basic figures others not readme r create such results into done executable principles methods environment md examples peer glossary control publish digital chapter elements only computational publication description three text csv contains makefile dataclean dataraw datapackage json read human generated think good science review next resources prerequisites recommended versioncontrol open openresearch part environments reproducibleenvironments binder binderhub reproducibility collection parts including reproducing cite together main why combines work publishing allows analysis executed give ways using contain conventional clearly possible start file described dockerfile generate
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /../content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Research Compendia</div>
+</div>
+    
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Research-compendia">Research compendia<a class="anchor-link" href="#Research-compendia"> </a></h1><h2 id="Prerequisites-/-recommended-skill-level">Prerequisites / recommended skill level<a class="anchor-link" href="#Prerequisites-/-recommended-skill-level"> </a></h2><table>
+<thead><tr>
+<th>Prerequisite</th>
+<th>Importance</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/version_control/version_control">Version Control</a></td>
+<td>Helpful</td>
+<td>Can be used to version the compendium</td>
+</tr>
+<tr>
+<td><a href="/open_research/open_research">Open Research</a></td>
+<td>Helpful</td>
+<td>Components are part of the compendium</td>
+</tr>
+<tr>
+<td><a href="reproducible_environments/reproducible_environments">Reproducible Environments</a></td>
+<td>Helpful</td>
+<td>Can be used to make the compendium reproducible</td>
+</tr>
+<tr>
+<td><a href="binderhub/binderhub">Binder Hub</a></td>
+<td>Helpful</td>
+<td>Can be used to publish the compendium</td>
+</tr>
+<tr>
+<td><a href="make/make">Reproducibility with Make</a></td>
+<td>Helpful</td>
+<td>Can be used for automation in the compendium</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary"> </a></h2><p>A research compendium is a collection of all digital parts of a research project including data, code, texts (protocols, reports, questionnaires, meta data).
+The collection is created in such a way that reproducing all results is straight forward {% cite Nuest2017compendia Gentleman2007statistical %}.</p>
+<p>This chapter has many prerequisites as it takes all digital components of a project together into a reproducible research package.
+That said: a research compendium can be constructed with minimal technical knowledge.
+The main purpose is that all elements of a project are published together, so a basic folder structure combining all components can be sufficient.</p>
+<p><img src="../figures/ResearchCompendium.jpg" alt="Cartoon of a research compendium"></p>
+<h2 id="How-this-will-help-you/why-this-is-useful">How this will help you/why this is useful<a class="anchor-link" href="#How-this-will-help-you/why-this-is-useful"> </a></h2><p>A research compendium combines all elements of your project, allowing others to reproduce your work, and should be the final product of your research project.
+Publishing your research paper along with a research compendia allows others to access your input, test your analysis, and, if the compendium can be executed, rerun to assess the resulting output.
+This does not only instill trust in your research but can give you more visibility.
+Others may use your research in unexpected ways, some of which are discussed below (refer section: [Using a research compendium].</p>
+<h2 id="Chapter-content">Chapter content<a class="anchor-link" href="#Chapter-content"> </a></h2><p>A research compendium at its most basic is a comprehensive set of files that combines all components of a project.
+This compendium can be downloaded and run locally to recreate the work done, or it can contain elements that allow it to be executed on a remote server.
+Executable research compendia aim to make the computational part of a scientific publication reproducible by providing all the building blocks available and give a description of how the user can execute the containing code.</p>
+<h3 id="Structure-of-a-research-compendium">Structure of a research compendium<a class="anchor-link" href="#Structure-of-a-research-compendium"> </a></h3><p>Three principles should be kept in mind when constructing a research compendium. {% cite Marwick2018compendia %}</p>
+<ul>
+<li>Files should organized in a conventional folder structure;</li>
+<li>Data, methods, and output should be clearly separated;</li>
+<li>The computational environment should be specified.</li>
+</ul>
+<p>With these principles, a wide variety of compendia are possible.
+Let's start with the most basic version.</p>
+<h5 id="Basic-research-compendium">Basic research compendium<a class="anchor-link" href="#Basic-research-compendium"> </a></h5><p>A basic compendium follows these three principles.
+It separates data and methods into a conventional folder structure, and describes the computational environment in a designated file.
+Furthermore, any compendium should have a landing page in the form of a README document.</p>
+<div class="highlight"><pre><span></span>compendium/
+├── data
+│   ├── my_data.csv
+├── analysis
+│   └── my_script.R
+├── DESCRIPTION
+└── README.md
+</pre></div>
+<h4 id="Executable-research-compendium">Executable research compendium<a class="anchor-link" href="#Executable-research-compendium"> </a></h4><p>The following folder can be considered an executable research compendium.
+It contains all the digital parts of the research project (code, data, text, figures) and all the information on how to obtain the results.
+The computing environment is described in the <code>Dockerfile</code>, the dependencies of files and how to automatically generate the results are described in the <code>Makefile</code>.
+Additionally we have a <code>README.md</code> describing what the compendium is about and a <code>LICENSE</code> file with info on how it can be used.</p>
+<div class="highlight"><pre><span></span>compendium/
+├── CITATION
+├── code
+│   ├── analyse_data.R
+│   └── clean_data.R
+├── data_clean
+│   └── data_clean.csv
+├── data_raw
+│   ├── datapackage.json
+│   └── data_raw.csv
+├── Dockerfile
+├── figures
+│   └── flow_chart.jpeg
+├── LICENSE
+├── Makefile
+├── paper.Rmd
+└── README.md
+</pre></div>
+<h4 id="Separating-methods,-data,-output">Separating methods, data, output<a class="anchor-link" href="#Separating-methods,-data,-output"> </a></h4><p>The principles of a research compendium state that it should clearly separate Methods, Data, and Output.
+Phrased differently, this means we should distinguish between three types of files and folders:</p>
+<ul>
+<li><strong>Read-only</strong>: raw data (<code>data_raw\</code>), metadata (<code>datapackage.json</code>, <code>CITATION</code>)</li>
+<li><strong>Human-generated</strong>: code (<code>clean_data.R</code>, <code>analyse_data.R</code>), paper (<code>paper.Rmd</code>), documentation (<code>README.md</code>)</li>
+<li><strong>Project-generated</strong>: clean data (<code>data_clean\</code>, figures (<code>figures\</code>), other output</li>
+</ul>
+<p>The examples mentioned here are not exhaustive and some may first be "human-generated" and at some point become "read-only" (for example a human may generate the data metadata <code>datapackage.json</code>, but once that is done it may become something not to be touched).
+In other words, whether a folder contains files in either of these categories, may depend on the life cycle of the project.</p>
+<h3 id="Creating-a-research-compendium">Creating a research compendium<a class="anchor-link" href="#Creating-a-research-compendium"> </a></h3><p>If you already use some of the tools in this book - such as version control, Makefiles, and/or reproducible environments - it may come naturally to you to create a research compendium.
+This is, because a version control repository can be a research compendium; A Makefile makes it executable; A reproducible environment makes it reproducible.
+To create a research compendium, we recommend to first think about <em>what the components of your project are</em> and create the folder structure accordingly.
+Use names for files and folders that make it easy for others to understand what they contain.
+It is a good idea to think about this early in the research process and start your project with the mindset that the output in the end is a research compendium rather than just a research paper.</p>
+<h3 id="Publishing-a-research-compendium">Publishing a research compendium<a class="anchor-link" href="#Publishing-a-research-compendium"> </a></h3><p>There are several options to publish a research compendium:</p>
+<ul>
+<li>On a versioning platform such as GitHub or GitLab (potentially with a link to Binder).</li>
+<li>On a research archive such as Zenodo or the Open Science Framework (OSF).</li>
+<li>As supplementary material of a paper publication.</li>
+</ul>
+<p>For examples, see the label/tag/community "research-compendium" (applied on GitHub, Zenodo, OSF) or as a fallback the term "research compendium" in the description (used on GitLab). For more info, see also <a href="https://research-compendium.science">https://research-compendium.science</a>.</p>
+<p>In the future, the research compendium may even be the publication itself which is being peer reviewed (rather that just peer reviewing the paper, why not review the entire research project).</p>
+<h3 id="Using-a-research-compendium">Using a research compendium<a class="anchor-link" href="#Using-a-research-compendium"> </a></h3><p>A research compendium can be used in several ways, including (but not limited to):</p>
+<ul>
+<li>Peer review: If peers can check what you have done, they can review it much more thoroughly.</li>
+<li>Understanding research: If you really want to understand what someone has done in their research project, the research compendium is what you need to look at.</li>
+<li>Teaching: Research compendia can be great examples to be used in teaching.</li>
+<li>Reproducibility studies / repro hacks: A research compendium allows other researchers to attempt (and hopefully succeed) to redo your computations.</li>
+</ul>
+<h2 id="Checklist">Checklist<a class="anchor-link" href="#Checklist"> </a></h2><p>To create a research compendium, follow these steps:</p>
+<ul>
+<li>[ ] Think about a good folder structure (see example above)</li>
+<li>[ ] Create folder structure (main directory and sub directories)</li>
+<li>[ ] Optional: Make the compendium into a git repository</li>
+<li>[ ] Add all files needed for reproducing the results of the project</li>
+<li>[ ] Try to have the compendium as clean and easy to use as possible when you advertise it for others to use</li>
+<li>[ ] Optional: Have a peer check the compendium and see if it works correctly</li>
+<li>[ ] Publish your compendium</li>
+</ul>
+<h2 id="What-to-learn-next">What to learn next<a class="anchor-link" href="#What-to-learn-next"> </a></h2><!--- TODO: recommended next chapters that are a good next step up -->
+
+<h2 id="Further-reading">Further reading<a class="anchor-link" href="#Further-reading"> </a></h2><p>The website <a href="https://research-compendium.science">https://research-compendium.science</a> contains links to further resources and publications on research compendia as well as links to examples.</p>
+<!---
+> top 3/5 resources to read on this topic (if they weren't licensed so we could include them above already) at the top, maybe in their own box/in bold.
+> less relevant/favourite resources in case someone wants to dig into this in detail
+-->
+
+
+<h2 id="Definitions/glossary">Definitions/glossary<a class="anchor-link" href="#Definitions/glossary"> </a></h2><p>See our <a href="glossary/glossary">glossary</a> for explanations of terms used in the chapter.</p>
+<h2 id="Bibliography">Bibliography<a class="anchor-link" href="#Bibliography"> </a></h2><p>{% bibliography --cited %}</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

@@ -1,0 +1,98 @@
+---
+redirect_from:
+  - "/code-quality/code-quality"
+title: |-
+  Code quality
+pagenum: 41
+prev_page:
+  url: /reproducible_environments/08/resources.html
+next_page:
+  url: /testing/testing.html
+suffix: .md
+search: code style quality coding tools analysis services software static checks google list org easier bugs issues also source io python github com using used language summary automatic online providing same read why languages guide open projects formatting automatically editorconfig editors support repository free command line formatters several following yourself understand therefore well analyze addition maintain consistent prospector readthedocs lintr shellcheck www format makes matters styles example pep dev guides various programming highly recommended multiple project black yapf often editor usually service gitlab features configured shields prerequisite importance experience programminghistorian en lessons intro bash helpful table contents ways improve require relatively
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /../content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Code quality</div>
+</div>
+    
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Code-Quality">Code Quality<a class="anchor-link" href="#Code-Quality"> </a></h1><table>
+<thead><tr>
+<th>Prerequisite</th>
+<th>Importance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://programminghistorian.org/en/lessons/intro-to-bash">Experience with the command line</a></td>
+<td>Helpful</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Table-of-contents">Table of contents<a class="anchor-link" href="#Table-of-contents"> </a></h2><ol>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#static-code-analysis">Static code analysis</a></li>
+<li><a href="#code-style">Code style</a><ol>
+<li><a href="#automatic-code-formatters">Automatic code formatters</a></li>
+</ol>
+</li>
+<li><a href="#online-services-providing-software-quality-checks">Online services providing software quality checks</a></li>
+</ol>
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary"> </a></h2><p>There are several ways to improve software quality that require relatively little effort.
+By following a coding style, code will be easier for yourself and others to understand and therefore it will contain fewer bugs.
+Tools for static code analysis can report bugs as well as style issues without even running the code.</p>
+<h2 id="Static-code-analysis">Static code analysis<a class="anchor-link" href="#Static-code-analysis"> </a></h2><p>Static code analysis tools, also known as linters, can analyze source code and find bugs before your code is executed.
+In addition to finding bugs, many of these tools can also help maintain a consistent coding style.
+Examples of linter tools include <a href="https://prospector.readthedocs.io">prospector</a> for Python, <a href="https://github.com/jimhester/lintr">lintr</a> for R, or <a href="https://www.shellcheck.net">shellcheck</a> for shell scripts.</p>
+<h2 id="Code-style">Code style<a class="anchor-link" href="#Code-style"> </a></h2><p>A coding style is a set of conventions on how to format code.
+For instance, what do you call your variables? Do you use spaces or tabs for indentation? Where do you put comments?
+Consistently using the same style throughout your code, makes it easier to read.
+Code that is easy to read, is easier to understand for yourself as well as potential collaborators.
+Therefore adhering to a coding style reduces the risk of mistakes and makes it easier to work together on software.
+<a href="http://coding.smashingmagazine.com/2012/10/25/why-coding-style-matters/">Improving software quality, why Coding Style Matters</a> is a nice article on why coding styles matter and how they increase software quality.</p>
+<p>For example, <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a> is the most widely used Python coding style.</p>
+<p>For commonly used style guides for various programming languages see the <a href="https://guide.esciencecenter.nl/best_practices/language_guides/languages_overview.html">Language Guides</a>.
+Google also has a style guide for many languages <a href="https://code.google.com/p/google-styleguide/">google style guide page</a> that are used in open source projects originating out of Google.</p>
+<h3 id="Automatic-formatting">Automatic formatting<a class="anchor-link" href="#Automatic-formatting"> </a></h3><p>Numerous tools exists to automatically format code such that it follows a certain style.
+Using these is highly recommended, as it can save you a lot of time.</p>
+<p><a href="https://editorconfig.org">EditorConfig</a> is a language independent tool that helps maintain consistent whitespace styles for multiple people working on the same project across various editors.
+Most editors support EditorConfig either natively or through a plugin.</p>
+<p>In addition to that, there are many language specific tools for automatically formatting code according to a particular style.
+For example, <a href="https://black.readthedocs.io">Black</a> and <a href="https://pypi.org/project/yapf/">yapf</a> are tools for automatically formatting Python code.
+Note that editors often support using these tools directly from the editor.</p>
+<h2 id="Online-services-providing-software-quality-checks">Online services providing software quality checks<a class="anchor-link" href="#Online-services-providing-software-quality-checks"> </a></h2><p>There are several web services that analyze code and make the quality of the code visible.
+Usually these services run one or more static code analysis tools that can also be used from the command line or integrated into your editor on your own computer.
+Using a code quality service that integrates with a GitHub/GitLab repository is highly recommended, as it will make it spot and communicate about quality issues in pull requests.</p>
+<p>Code quality analysis services are websites that often offer the following features:</p>
+<ul>
+<li>Automaticly analyse your code after pushing it to GitHub/GitLab</li>
+<li>Usually free for open source projects</li>
+<li>Support multiple programming languages, but not every language will have the same level of features</li>
+<li>Grade or score for the quality of all of the code in the repository</li>
+<li>List of issues with the code, grouped by severity</li>
+<li>Drill down to location of issue</li>
+<li>Default list of checks which the service provider finds the best practice</li>
+<li>Can be configured to make the list of checks more strict or relaxed</li>
+<li>Can be configured to ignore files or extensions</li>
+<li>Can read a configuration file from repository</li>
+<li>Track issues over time and send alerts when quality deteriorates</li>
+<li>Optionally reports on code coverage generated by a CI build</li>
+</ul>
+<p>For a list of choices see <a href="https://shields.io/category/analysis">shields.io</a> or <a href="https://github.com/ripienaar/free-for-dev#code-quality">this list of services that are free for open source projects</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

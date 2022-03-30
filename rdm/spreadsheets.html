@@ -1,0 +1,63 @@
+---
+title: |-
+  Data organisation in spreadsheets
+pagenum: 27
+prev_page:
+  url: /rdm/storagebackup.html
+next_page:
+  url: /rdm/docmetadata.html
+suffix: .md
+search: data spreadsheets not org files its dont file raw values information names research such libreoffice www used horror stories editing analysis avoided calculations only spreadsheet organised read practical avoid ensure cells put cell variable column datacarpentry using microsoft excel open source alternative commonly collect store manipulate analyse share convenient easy tools tasks facilitate reproducibility dynamic documents collection eusprig htm document ways scuppered analyses due unexpected behaviour error prone processes mishaps unique doi s manipulation particular best without version control lead non reproducible workflows opening directly hand example change perform process new obtained properly documented accidentally something type wrong value notice
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /../content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Data organisation in spreadsheets</div>
+</div>
+    
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Using-spreadsheets-for-research-data">Using spreadsheets for research data<a class="anchor-link" href="#Using-spreadsheets-for-research-data"> </a></h1><p>Spreadsheets, such as Microsoft Excel files and its Open Source alternative <a href="www.libreoffice.org">LibreOffice</a>, are commonly used to collect, store, manipulate, analyse, and share research data.
+Spreadsheets are convenient and easy-to-use tools for these tasks but are not facilitate reproducibility
+if used as dynamic documents.
+There is a collection of <a href="http://www.eusprig.org/horror-stories.htm">horror-stories</a> that document the many ways that the use of spreadsheets have scuppered analyses due to unexpected behaviour or error-prone
+editing processes.
+Some of these mishaps are not unique to spreadsheets, but <a href="https://doi.org/10.1186/s13059-016-1044-7">many are</a>.</p>
+<p>Data manipulation and analysis in spreadsheets in particular is best avoided as, without version control, it can lead to non-reproducible workflows.
+By opening and editing raw data files directly by hand, for example to change values or perform calculations, the process by which new values are obtained is not properly documented, and you may accidentally over-write something or type in the wrong value only to notice after it's too late (or not at all).</p>
+<p>Even if these errors are avoided, if the spreadsheet is poorly organised then it may be <a href="https://luisdva.github.io/pls-don&#39;t-do-this/">difficult for collaborators</a> to easily <a href="#FAIR">read-in and re-use</a> your
+data for further analysis.</p>
+<p>It's often not practical to avoid the use of spreadsheets altogether but there are some simple steps that can be taken
+to mitigate their flaws.
+The following principles, provide some practical advice to ensure your data is clearly organised and human- and machine-readable {% cite Broman2018data --suppress_author %}:</p>
+<ul>
+<li>Be consistent</li>
+<li>Write dates as YYYY-MM-DD</li>
+<li>Don't leave any cells empty, if there is no data use "NA" (Not Available)</li>
+<li>Put each observation/sample in its own cell/row</li>
+<li>Put each variable in a column</li>
+<li>Each cell should contain information on one thing: separate multiple pieces of information to different cells</li>
+<li>Create a data dictionary</li>
+<li>Don't include calculations in the raw data files: make the file with raw data read-only!</li>
+<li>Don’t use font, color or highlighting, consider adding another variable/column for this information</li>
+<li>Choose descriptinve names for observations and variables and make sure there are no spaces or special characters in the names</li>
+<li>Make backups</li>
+<li>Use data validation to avoid data entry mistakes</li>
+<li>Save the data in text files (such as <code>.csv</code> - comma-separated values) to ensure interoperability with other software programmes.</li>
+</ul>
+<p>You can explain the file naming convention in a README.txt file, so that it will also become clear to others what the file names mean.
+To learn more about data organisation in spreadsheets, have a look at the Data Carpentry lessons for <a href="https://datacarpentry.org/spreadsheets-socialsci/">Social Scientists</a> and <a href="https://datacarpentry.org/spreadsheet-ecology-lesson/">Ecologists</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
