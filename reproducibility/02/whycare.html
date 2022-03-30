@@ -6,15 +6,15 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Why you should care</title>
-  <meta name="description" content="        Why you should care    Why you should care about reproducibility Markowetz highlights five reasons to work reproducibly (Markowetz, 2015):Avoiding di...">
+  <meta name="description" content="        Why you should care    Added advantages of working reproducibly In the previous chapter, we discussed the different aspects of reproducible research ...">
 
-  <link rel="canonical" href="https://the-turing-way.netlify.com//es/reproducibility/02/whycare.html">
+  <link rel="canonical" href="https://the-turing-way.netlify.com//reproducibility/02/whycare.html">
   <link rel="alternate" type="application/rss+xml" title="The Turing Way" href="https://the-turing-way.netlify.com//feed.xml">
 
-  <meta property="og:url"         content="https://the-turing-way.netlify.com//es/reproducibility/02/whycare.html" />
+  <meta property="og:url"         content="https://the-turing-way.netlify.com//reproducibility/02/whycare.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Why you should care" />
-<meta property="og:description" content="        Why you should care    Why you should care about reproducibility Markowetz highlights five reasons to work reproducibly (Markowetz, 2015):Avoiding di..." />
+<meta property="og:description" content="        Why you should care    Added advantages of working reproducibly In the previous chapter, we discussed the different aspects of reproducible research ..." />
 <meta property="og:image"       content="https://the-turing-way.netlify.com/" />
 
 <meta name="twitter:card" content="summary">
@@ -24,11 +24,11 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://the-turing-way.netlify.com//es/reproducibility/02/whycare.html",
+  "mainEntityOfPage": "https://the-turing-way.netlify.com//reproducibility/02/whycare.html",
   "headline": "Why you should care",
   "datePublished": "2022-03-30T17:22:20+01:00",
   "dateModified": "2022-03-30T17:22:20+01:00",
-  "description": "        Why you should care    Why you should care about reproducibility Markowetz highlights five reasons to work reproducibly (Markowetz, 2015):Avoiding di...",
+  "description": "        Why you should care    Added advantages of working reproducibly In the previous chapter, we discussed the different aspects of reproducible research ...",
   "author": {
     "@type": "Person",
     "name": "Kirstie Whitaker"
@@ -1618,18 +1618,43 @@ initFunction(initPrint)
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Why-you-should-care-about-reproducibility">Why you should care about reproducibility<a class="anchor-link" href="#Why-you-should-care-about-reproducibility"> </a></h1><p>Markowetz highlights five reasons to work reproducibly (Markowetz, 2015):</p>
-<ul>
-<li><strong>Avoiding disaster</strong>: By working reproducibly, you can trust your own research results and will not have to retract published results or keep publications back because you cannot reproduce your results.</li>
-<li><strong>Writing papers easier</strong>: Well documented analyses ensure that you have easy access to the latest results, your work can easily be written up, and collaborators can easily get on board as additional authors.
-Furthermore, you can be sure that you easily comply with the highest-level journal guidelines.</li>
-<li><strong>Convincing reviewers</strong>: Making code and data available to the reviewers means their review comments will be constructive as they are able to develop an in-depth understanding of your work and can even try changes to your analysis themselves and see the impact.</li>
-<li><strong>Facilitating continuity of work</strong>: Well documented work means your work can easily be picked up and continued - either by others in your laboratory, or yourself if you want to build on your own work after a longer period.</li>
-<li><strong>Building your reputation</strong>: Putting in effort to make your research reproducible shows that you are a careful researcher and makes your research results more robust.</li>
+<h1 id="Added-advantages-of-working-reproducibly">Added advantages of working reproducibly<a class="anchor-link" href="#Added-advantages-of-working-reproducibly"> </a></h1><p>In the previous chapter, we discussed the different aspects of reproducible research that are beneficial for the scientific community. 
+In this chapter, we will share some less obvious aspects of working reproducibly for individual researchers and teams.</p>
+<p><img src="../../figures/reasons_reproducibility.png" alt="Why we should care about working reproducibly"></p>
+<p><strong>1. Track a complete history of your research</strong></p>
+<p>Reproducible research must contain a complete history and narrative (also known as <a href="https://en.wikipedia.org/wiki/Provenance">Provenance</a>) of the project planning and development process. 
+This includes information on the data, tools, methods, codes, and documentation used in the research project.
+By storing a complete track-record of our work, we can ensure research sustainability, fair citation/acknowledgment, and usefulness of our and others' work in our research fields.</p>
+<p><strong>2. Facilitate collaboration and review process</strong></p>
+<p>By designing reproducible workflows and sharing them with the different components of our research project, we can allow others to develop an in-depth understanding of our work. 
+This encourages them to review our methods, test our code, propose useful changes and make thoughtful contributions to develop our project further. 
+Reproducible workflows facilitate the peer review process tremendously by allowing reviewers access to the different parts of the projects that are necessary to validate the research outcomes.</p>
+<p><strong>3. Publish validated research and avoid misinformation</strong></p>
+<p>Lack of reproducibility is one of the major factors that lead to paper retractions (source <a href="https://retractionwatch.com/">Retraction Watch</a>).
+The best-known analyses of scientific literatures in psychology <a class="citation" href="#Begley2012">(“Raise standards for preclinical cancer research,” 2015)</a> and cancer biology <a class="citation" href="#aac47162015">(“Estimating the reproducibility of psychological science,” 2015)</a> found the reproducibility rates of their research output of around 40% and 10%, respectively.
+By working reproducibly, we can develop validated research work, avoid misinformation that can limit replicability of our work and publish accurate research outputs.
+This aspect does not only support the validity of the current work, but any future studies that are based on reproducible research <a class="citation" href="#MozillaScienceLab">(Lab, 2016)</a>.</p>
+<p><strong>4. Write your papers, thesis and reports efficiently</strong></p>
+<p>Well documented analyses help us maintain easy access to all the results generated within a project that can be written up efficiently. 
+If working in a team, collaborators can easily get recognition in terms of authorship for their contributions. Furthermore, by availing the underlying dataset and methods we can easily comply with the highest-level journal guidelines.</p>
+<p><strong>5. Get credits for your work fairly</strong></p>
+<p>Applying reproducibility practices separately on different parts of the project such as data, independently executable codes and scripts, protocols, and reports allows other researchers to test and reuse our work in their research, and brings fair recognition for our work. 
+Researchers who publish their work with the underlying information, get cited more often as their research outcome can be broadly replicated and trusted. 
+This fair credit system encourages researchers to further maintain reproducibility practices in their work.</p>
+<p><strong>6. Ensure continuity of your work</strong></p>
+<p>By following guidelines for reproducibility, we can easily communicate our work with different stakeholders such as our supervisors, funders, reviewers, students, and potential collaborators. 
+This aspect of reproducibility increases the usefulness of our research by enabling others to easily build on our results, and re-use our research materials <a class="citation" href="#MozillaScienceLab">(Lab, 2016)</a>. 
+This ensures the continuity of a research idea and can even find fresh applications in other contexts. 
+Progress of such projects can easily be tracked and continued - either by other researchers, or yourself if you want to build on your own work after a longer period <a class="citation" href="#Markowetz2015">(Markowetz, 2015)</a>.</p>
+<p>To learn about other benefits of working reproducibly on Open Research projects are covered in our <a href="../open_research/open_research">Open Research</a> chapter.</p>
+<h3 id="Reference:">Reference:<a class="anchor-link" href="#Reference:"> </a></h3><ul>
+<li><a class="citation" href="#Markowetz2015">(Markowetz, 2015)</a></li>
+<li><a class="citation" href="#MozillaScienceLab">(Lab, 2016)</a></li>
+<li><a class="citation" href="#Piwowar2007">(Piwowar et al., 2007)</a></li>
+<li><a class="citation" href="#Piwowar2013">(Piwowar &amp; Vision, 2013)</a></li>
+<li><a class="citation" href="#aac47162015">(“Estimating the reproducibility of psychological science,” 2015)</a></li>
+<li><a class="citation" href="#Begley2012">(“Raise standards for preclinical cancer research,” 2015)</a></li>
 </ul>
-<p>Papers whose underlying data is available get cited more often (Piwowar, Day &amp; Fridsma, 2007; Piwowar &amp; Vision, 2013).
-All research outputs that are shared can be built upon more easily by others and in some cases, others following up on your work might lead to new collaborations.
-Other benefits of working openly are covered in our <a href="../open_research/open_research">Open Research</a> chapter.</p>
 
 </div>
 </div>
@@ -1649,7 +1674,7 @@ Other benefits of working openly are covered in our <a href="../open_research/op
     
     
 
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/es/reproducibility/01/importantforscience.html">
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/reproducibility/01/importantforscience.html">
       〈 <span class="u-margin-right-tiny"></span> Why reproducibility is important
     </a>
   
@@ -1658,7 +1683,7 @@ Other benefits of working openly are covered in our <a href="../open_research/op
     
 
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/es/reproducibility/03/definitions.html">
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/reproducibility/03/definitions.html">
       Definitions <span class="u-margin-right-tiny"></span> 〉
     </a>
   

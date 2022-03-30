@@ -8,10 +8,10 @@
   <title>Conda</title>
   <meta name="description" content="        Conda    Package management systems Package managers install and keep track of the different software packages (and their versions) that you use with...">
 
-  <link rel="canonical" href="https://the-turing-way.netlify.com//es/reproducible_environments/02/package-management.html">
+  <link rel="canonical" href="https://the-turing-way.netlify.com//reproducible_environments/02/package-management.html">
   <link rel="alternate" type="application/rss+xml" title="The Turing Way" href="https://the-turing-way.netlify.com//feed.xml">
 
-  <meta property="og:url"         content="https://the-turing-way.netlify.com//es/reproducible_environments/02/package-management.html" />
+  <meta property="og:url"         content="https://the-turing-way.netlify.com//reproducible_environments/02/package-management.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Conda" />
 <meta property="og:description" content="        Conda    Package management systems Package managers install and keep track of the different software packages (and their versions) that you use with..." />
@@ -24,7 +24,7 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://the-turing-way.netlify.com//es/reproducible_environments/02/package-management.html",
+  "mainEntityOfPage": "https://the-turing-way.netlify.com//reproducible_environments/02/package-management.html",
   "headline": "Conda",
   "datePublished": "2022-03-30T17:22:20+01:00",
   "dateModified": "2022-03-30T17:22:20+01:00",
@@ -1734,10 +1734,17 @@ Python 3.7.1</code></pre>
 <p>This is the best way to install packages from within Conda as it will also install a Conda-tailored version of the package. However it is possible to use other methods if a Conda-specific version of a package is not available. For example <code>pip</code> is commonly used to install Python packages, so a command like</p>
 
 <pre><code>pip install scipy</code></pre>
-<p>still works.</p>
+<p>will list 'scipy' package explicitely - as long as <code>pip</code> is installed inside the currently active conda environment.
+Unfortunately, when conda and pip are used together to create an environment, it can lead to a state that can be hard to reproduce. Specifically, running conda after pip may potentially overwrite or break packages installed via pip. One way to avoid this is by installing as many requirements as possible with conda, and then use pip. Detailed information can be read on the post <a href="https://www.anaconda.com/using-pip-in-a-conda-environment/">Using Pip in a Conda Environment</a>.</p>
 <p>Although Python packages have been used in many of the examples given here Conda packages do not have to be Python packages, for example here the R base language is installed along with the R package r-yaml</p>
 
 <pre><code>conda create --name Project_One r-base r-yaml</code></pre>
+<p>To see all of the installed packages in the current environment</p>
+
+<pre><code>conda list</code></pre>
+<p>To check if a particular package is installed, for example, <code>scipy</code> in this case:</p>
+
+<pre><code>conda list scipy</code></pre>
 <p>A Conda channel is where it downloaded a package from. Common channels include Anaconda (a company which provides the <code>defaults</code> conda package channel), and conda-forge (a community-driven packaging endeavour). You can explicitly install a package from a certain channel by specifying it like:</p>
 
 <pre><code>conda install -c channel_name package_name</code></pre>
@@ -1773,7 +1780,7 @@ Python 3.7.1</code></pre>
     
     
 
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/es/reproducible_environments/01/options.html">
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/reproducible_environments/01/options.html">
       〈 <span class="u-margin-right-tiny"></span> Choosing a tool
     </a>
   
@@ -1782,7 +1789,7 @@ Python 3.7.1</code></pre>
     
 
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/es/reproducible_environments/03/yaml.html">
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/reproducible_environments/03/yaml.html">
       YAML <span class="u-margin-right-tiny"></span> 〉
     </a>
   

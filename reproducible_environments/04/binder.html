@@ -8,10 +8,10 @@
   <title>Binder</title>
   <meta name="description" content="        Binder    Binder Now that we've seen how to use and capture the computational environment used in a Python project, it's time to think about how to s...">
 
-  <link rel="canonical" href="https://the-turing-way.netlify.com//es/reproducible_environments/04/binder.html">
+  <link rel="canonical" href="https://the-turing-way.netlify.com//reproducible_environments/04/binder.html">
   <link rel="alternate" type="application/rss+xml" title="The Turing Way" href="https://the-turing-way.netlify.com//feed.xml">
 
-  <meta property="og:url"         content="https://the-turing-way.netlify.com//es/reproducible_environments/04/binder.html" />
+  <meta property="og:url"         content="https://the-turing-way.netlify.com//reproducible_environments/04/binder.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Binder" />
 <meta property="og:description" content="        Binder    Binder Now that we've seen how to use and capture the computational environment used in a Python project, it's time to think about how to s..." />
@@ -24,7 +24,7 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://the-turing-way.netlify.com//es/reproducible_environments/04/binder.html",
+  "mainEntityOfPage": "https://the-turing-way.netlify.com//reproducible_environments/04/binder.html",
   "headline": "Binder",
   "datePublished": "2022-03-30T17:22:20+01:00",
   "dateModified": "2022-03-30T17:22:20+01:00",
@@ -1627,14 +1627,14 @@ initFunction(initPrint)
 <p><strong>Step 2:</strong> The researcher's project contains many files of different types. In this case the researcher has been working in Jupyter notebooks, but Binder can be used just as effectively with many other file formats and languages which we'll cover in more detail shortly.</p>
 <p><strong>Step 3:</strong> The researcher uploads her code to a publicly available repository hosting service, such as GitHub, where it can be accessed by others. She includes a file describing the computational environment required to run the project.</p>
 <p><strong>Step 4:</strong> She generates a link at the <a href="https://mybinder.org">mybinder.org</a> BinderHub. By clicking on this link anyone can access a "Binderized" version of her project. The click triggers repo2docker to build an Docker image based on the contents of the repository and its configuration files. This image is then hosted on the cloud. The person who clicked the link will be taken to a copy of her project in their web browser that they can interact with. This copy of the project they interact with is hosted in the environment the researcher specified in step 3, regardless of the computational environment of the person is accessing it from.</p>
-<p><img src="../../../figures/binder_comic.png" alt="binder_comic"></p>
+<p><img src="../../figures/binder_comic.png" alt="binder_comic"></p>
 <p>Figure credit: <a href="https://opendreamkit.org/2017/11/02/use-case-publishing-reproducible-notebooks/">Juliette Taka, Logilab and the OpenDreamKit project</a></p>
 <p>To get an idea of what this looks like here's what a binder of a simple example project looks like. Files are listed and can be clicked on and modified by the person accessing the binder.</p>
-<p><img src="../../../figures/binder_home.png" alt="binder_home"></p>
+<p><img src="../../figures/binder_home.png" alt="binder_home"></p>
 <p>Users can also open terminals to run or otherwise interact with the files by clicking on "New" and then "Terminal" in the top right of the home binder screen shown above. Here this is used to run the analysis script in the example binder which performs a linear regression on some data:</p>
-<p><img src="../../../figures/binder_terminal.png" alt="binder_terminal"></p>
+<p><img src="../../figures/binder_terminal.png" alt="binder_terminal"></p>
 <p>As mentioned Binder is well integrated with Jupyter notebooks which can be opened by clicking on "New" and then under "Notebook" in the same way terminals can be opened. These may be more convenient for those working with graphical outputs, as shown here where one is used to run <code>make_plot.py</code> in the example Binder:</p>
-<p><img src="../../../figures/binder_notebook.png" alt="binder_notebook"></p>
+<p><img src="../../figures/binder_notebook.png" alt="binder_notebook"></p>
 <p>If R is installed in a Binder the dropdown menu will show the options to open R Jupyter notebooks and RStudio sessions in the Binder.</p>
 <p><a name="Disambiguation"></a></p>
 <h3 id="Disambiguation">Disambiguation<a class="anchor-link" href="#Disambiguation"> </a></h3><p>In this section there are a number of related terms, which will be outlined here for clarity:</p>
@@ -1713,7 +1713,7 @@ to install the base Latex package.</li>
 <p>Again, if you are unable to complete these steps refer to the chapter on version control for a fuller explanation.</p>
 <p><a name="Step_3_Generate_a_link_to_a_Binder_of_your_project"></a></p>
 <h4 id="Step-3:-Generate-a-link-to-a-Binder-of-your-project">Step 3: Generate a link to a Binder of your project<a class="anchor-link" href="#Step-3:-Generate-a-link-to-a-Binder-of-your-project"> </a></h4><p>Head to <a href="https://mybinder.org">https://mybinder.org</a>. You'll see a form that asks you to specify a repository for <a href="https://mybinder.org">mybinder.org</a> to build. In the first field, paste the URL of the project's GitHub repository. It'll look something like this: <code>https://github.com/&lt;your-username&gt;/&lt;your-repository&gt;</code></p>
-<p><img src="../../../figures/mybinder_gen_link.png" alt="mybinder_gen_link"></p>
+<p><img src="../../figures/mybinder_gen_link.png" alt="mybinder_gen_link"></p>
 <p>As you can see there are additional fields in this form, but these are optional are will not be discussed here.</p>
 <p>Once the URL to the project to be Binderized is supplied two fields will be automatically populated on the screen depicted above:</p>
 <ul>
@@ -1750,7 +1750,7 @@ to install the base Latex package.</li>
     
     
 
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/es/reproducible_environments/03/yaml.html">
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/reproducible_environments/03/yaml.html">
       〈 <span class="u-margin-right-tiny"></span> YAML
     </a>
   
@@ -1759,7 +1759,7 @@ to install the base Latex package.</li>
     
 
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/es/reproducible_environments/05/virtual-machines.html">
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/reproducible_environments/05/virtual-machines.html">
       Virtual machines <span class="u-margin-right-tiny"></span> 〉
     </a>
   

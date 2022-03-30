@@ -8,10 +8,10 @@
   <title>Containers</title>
   <meta name="description" content="        Containers    Containers Why Containers? Even for moderately complex projects, the size of the software dependency stack can be huge. Take for exampl...">
 
-  <link rel="canonical" href="https://the-turing-way.netlify.com//es/reproducible_environments/06/containers.html">
+  <link rel="canonical" href="https://the-turing-way.netlify.com//reproducible_environments/06/containers.html">
   <link rel="alternate" type="application/rss+xml" title="The Turing Way" href="https://the-turing-way.netlify.com//feed.xml">
 
-  <meta property="og:url"         content="https://the-turing-way.netlify.com//es/reproducible_environments/06/containers.html" />
+  <meta property="og:url"         content="https://the-turing-way.netlify.com//reproducible_environments/06/containers.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Containers" />
 <meta property="og:description" content="        Containers    Containers Why Containers? Even for moderately complex projects, the size of the software dependency stack can be huge. Take for exampl..." />
@@ -24,7 +24,7 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://the-turing-way.netlify.com//es/reproducible_environments/06/containers.html",
+  "mainEntityOfPage": "https://the-turing-way.netlify.com//reproducible_environments/06/containers.html",
   "headline": "Containers",
   "datePublished": "2022-03-30T17:22:20+01:00",
   "dateModified": "2022-03-30T17:22:20+01:00",
@@ -1623,7 +1623,7 @@ initFunction(initPrint)
 <h3 id="Why-Containers?">Why Containers?<a class="anchor-link" href="#Why-Containers?"> </a></h3><p>Even for moderately complex projects, the size of the software dependency stack can be huge. Take for example a simple
 pipeline to build a pdf report for an analysis scripted in R using Rmarkdown. To make this reproducible, not only (i)
 the respective R packages need to be installed and (ii) the R version needs to be the same, but also (iii) the versions
-of pandoc and LaTeX need to be exaclty the same as during runtime.</p>
+of pandoc and LaTeX need to be exactly the same as during runtime.</p>
 <p>Instead of trying to resolve these dependencies via a package manager (such as conda) which also depends on all required
 software being available in a single package manager, it might be easier to simply create a snapshot of the entire
 computing environment including all dependencies. These computing environments are then self-contained, hence the name
@@ -1665,8 +1665,8 @@ person can then use the image to generate a container containing a working versi
 <h3 id="What-is-Docker?">What is Docker?<a class="anchor-link" href="#What-is-Docker?"> </a></h3><p>There are a number of different tools available for creating and working with containers. We will focus on Docker, which
 is widely used, but be aware that others such as Singularity also exist. Singularity is sometimes preferred for use on
 HPC systems as it does not need <code>sudo</code> permissions to be run, while Docker does.</p>
-<p>In Docker the recipe files used to generate images are known as Dockerfiles, and should be named "Dockerfile".</p>
-<p><a href="https://hub.docker.com/">DockerHub</a> hosts a great many pre-made images which can be downloaded and build upon, such as
+<p>In Docker the recipe files used to generate images are known as Dockerfiles, and should be named <code>Dockerfile</code>.</p>
+<p><a href="https://hub.docker.com/">Docker Hub</a> hosts a great many pre-made images which can be downloaded and build upon, such as
 <a href="https://hub.docker.com/_/ubuntu">images</a> of Ubuntu machines. This makes the process of writing Dockerfiles relatively
 easy since users very rarely need to start from scratch, they can just customise existing images. However, this does
 leave a user vulnerable to similar security issues as were described in the section on <a href="#Security_issues">YAML files</a>:</p>
@@ -1677,22 +1677,22 @@ leave a user vulnerable to similar security issues as were described in the sect
 <p><a href="https://opensource.com/business/14/7/docker-security-selinux">This</a> article goes deeper into the potential security
 vulnerabilities of containers and here is a
 <a href="https://opensource.com/business/14/9/security-for-docker">detailed breakdown</a> of security features currently within
-Docker, and how they function. The best advice for using images built by others is as standard- only download and run
-something on your machine if it comes from a trusted source. DockerHub has "official image" badges for commonly used,
+Docker, and how they function. The best advice for using images built by others is, as usual, only download and run
+something on your machine if it comes from a trusted source. Docker Hub has "official image" badges for commonly used,
 verified images as shown here:</p>
-<p><img src="../../../figures/docker_official_image.png" alt="Docker_official_image"></p>
+<p><img src="../../figures/docker_official_image.png" alt="Docker_official_image"></p>
 <p><a name="Installing_Docker"></a></p>
 <h3 id="Installing-Docker">Installing Docker<a class="anchor-link" href="#Installing-Docker"> </a></h3><p>Installers for Docker on a variety of different systems are available <a href="https://docs.docker.com/install/">here</a>. Detailed
 installation instructions are also available for a variety of operating systems such as
-<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">ubuntu</a>,
-<a href="https://docs.docker.com/install/linux/docker-ce/debian/">debian</a>,
+<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Ubuntu</a>,
+<a href="https://docs.docker.com/install/linux/docker-ce/debian/">Debian</a>,
 <a href="https://docs.docker.com/docker-for-mac/install/">Macs</a>, and
 <a href="https://docs.docker.com/docker-for-windows/install/">Windows</a>.</p>
 <p><a name="Key_commands"></a></p>
 <h3 id="Key-commands">Key commands<a class="anchor-link" href="#Key-commands"> </a></h3><p>Here are a few key commands for creating and working with containers.</p>
 <ul>
 <li>To build an image from a Dockerfile go to the directory where the Dockerfile is and run:
-<pre><code>sudo docker build tag=name_to_give_image .</code></pre>
+<pre><code>sudo docker build --tag image_name .</code></pre>
 </li>
 <li>To list the images on your system use
 <pre><code>sudo docker image ls</code></pre>
@@ -1710,13 +1710,13 @@ the project files.</li>
 </li>
 <li>There are also three main commands used for changing the status of containers:<ul>
 <li>Pausing suspends the process running the container.
-<pre><code>sudo docker container_ID pause</code></pre>
+<pre><code>sudo docker pause container_ID</code></pre>
 Containers can be unpaused by replacing <code>pause</code> with <code>unpause</code>.</li>
 <li>Stopping a container terminates the process running it. A container must be stopped before it can be deleted.
-<pre><code>sudo docker container_ID stop</code></pre>
+<pre><code>sudo docker stop container_ID</code></pre>
 A stopped container can be restarted by replacing <code>stop</code> with <code>restart</code>.</li>
 <li>If <code>stop</code> does not work containers can be killed using
-<pre><code>sudo docker container_ID kill</code></pre>
+<pre><code>sudo docker kill container_ID</code></pre>
 </li>
 </ul>
 </li>
@@ -1730,55 +1730,58 @@ A stopped container can be restarted by replacing <code>stop</code> with <code>r
 <pre><code># Step 1: Set up the computational environment
 
 # Set the base image
-FROM ubuntu
+FROM ubuntu:18.04
 
 # Install packages needed to run the project
-RUN apt-get update
-RUN apt-get install sudo
-RUN sudo apt-get update
-RUN sudo apt-get install -y python3.7
-RUN sudo apt-get install -y python3-pip
-RUN pip3 install numpy
+RUN apt-get update &amp;&amp; \
+    apt-get install -y --no-install-recommends python3.7 python3-pip &amp;&amp; \
+    rm -rf /var/lib/apt/lists/*
+RUN python3 -m pip install numpy
 
 #-----------------------
 
 # Step 2: Include the project files in the image
 
-# Make a directory called "project" to hold the project files
-RUN mkdir project
-
-# Copy files from the project_files directory on the machine building the image
-# into the "project" directory created by the previous line of code
-COPY project_files/* project/</code></pre>
+# Copy files from the `project_files` directory on the machine building the image
+# into the `project` folder in the container. This folder and any missing
+# directories in its path are created automatically.
+COPY project_files/ project/</code></pre>
 <p>This looks complicated, but most of the lines in this example are comments (which are preceded by <code>#</code>s), There are only
-nine lines of actual code. The first of these is a <code>FROM</code> statement specifying a base image. All Dockerfiles require a
+six lines of actual code. The first of these is a <code>FROM</code> statement specifying a base image. All Dockerfiles require a
 FROM, even if it's just <code>FROM SCRATCH</code>. All the following commands in a Dockerfile build upon the base image to make a
-functioning version of the researcher's project.</p>
+functioning version of the researcher's project. Specifing a version for the image (<code>18.04</code> in this case) is optional
+but is best practice as it ensures that our Dockerfile remains valid after new releases of Ubuntu, which may not
+include packages (or specific versions thereof) that we require later (for example <code>python3.7</code>).</p>
 <p>It is worth spending time carefully choosing an appropriate base image as doing do can reduce the amount of work
 involved in writing a Dockerfile dramatically. For example a collection of images with the R programming language
 included in them can be found <a href="https://github.com/rocker-org/rocker-versioned">here</a>. If a project makes use of R it is
 convenient to use one of these as a base image rather than spend time writing commands in your Dockerfile to install R.</p>
-<p>The biggest block of lines comes next, it's a series of <code>RUN</code> statements, which run shell command when building the
-image. In this block they are used to install the software necessary to run the project. Run commands can also be
-chained as follows if desired:</p>
+<p>The biggest block of lines comes next, it's a series of <code>RUN</code> statements, which run shell commands when building the
+image. In this block they are used to install the software necessary to run the project. The first <code>RUN</code> block is a
+chain of commands of this form:</p>
 
 <pre><code>RUN command_to_do_thing_1 \
    &amp;&amp; command_to_do_thing_2 \
    &amp;&amp; command_to_do_thing_3 \
    &amp;&amp; command_to_do_thing_4</code></pre>
-<p>Another RUN statement is used to run the shell command <code>RUN mkdir project</code> which makes a directory called project in the
-container to host the files related to this project.</p>
+<p>It is good practice to group related commands into a single <code>RUN</code> block to reduce the final size of your image by
+<a href="https://docs.docker.com/develop/develop-images/#minimize-the-number-of-
+layers">avoiding the creation of unnecessary layers</a>. We also follow best-practice by using <code>--no-install-recommends</code> to
+<a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#dont-install-unnecessary-packages">avoid installing unnecessary packages</a>
+and <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#run">cleaning up the apt cache</a>, both of
+which further reduce the size of Debian or Ubuntu images.</p>
+<p>After we've installed Python we use another RUN statement to install a library required by our code.</p>
 <p>Finally the <code>COPY</code> command is used to copy the project files from the machine building the image into the image itself.
 The syntax of this command is <code>COPY file_to_copy location_in_container_to_copy_to</code>. In this example all the files in the
 "project_files" directory are included in the "project" file in the container. Note that you can only copy files from
-the directory where the Dockerfile is located, or subdirectories within it (in the example given here the project_files
-subdirectory).</p>
+the directory where the Dockerfile is located, or subdirectories within it (in the example given here the
+<code>project_files</code> subdirectory).</p>
 <p>The <code>ADD</code> command has the same capabilities as <code>COPY</code>, but it can also be used to add files not on the machine building
 the image. For example it can be used to include files hosted online by following ADD with a URL to the file. It is good
 practice to use <code>COPY</code> except where <code>ADD</code> is specifically required as the term <code>COPY</code> is more explicit about what is
 being done.</p>
 <p>Here's what happens if a container is opened from an image called book_example built from the example above:</p>
-<p><img src="../../../figures/container_example.png" alt="container_example"></p>
+<p><img src="../../figures/container_example.png" alt="container_example"></p>
 <p>As you can see the directory "project" has been created, and if we look inside the project files "analysis.py" and
 "data.csv" have been copied into it. Because the software required for the project has already been included by the
 Dockerfile in the image the "analysis.py" script runs without any further software needing to be installed.</p>
@@ -1801,14 +1804,14 @@ WORKDIR A
 # Make two directories, one called B_1 and one called B_2
 RUN mkdir B_1
 RUN mkdir B_2</code></pre>
-<p><img src="../../../figures/workdir_example.png" alt="workdir_example"></p>
+<p><img src="../../figures/workdir_example.png" alt="workdir_example"></p>
 <p>Directories B_1 and B_2 have been created within directory A.</p>
 <p>WORKDIR should be used whenever changing directories is necessary when building an image. It may be tempting to use
 <code>RUN cd directory_name</code> instead as this syntax will be more familiar to those that commonly work via the command line,
 but this can lead to errors. After each <code>RUN</code> statement in a Dockerfile the image is saved, any following commands are
 applied to the image anew. As an example here is what happens in the above example if the <code>WORKDIR A</code> line is swapped
 for <code>RUN cd A</code></p>
-<p><img src="../../../figures/cd_example.png" alt="cd_example"></p>
+<p><img src="../../figures/cd_example.png" alt="cd_example"></p>
 <p>All the directories have are in the top level in this case, rather than B_1 and B_2 being inside A. This is because the
 image was restarted after the <code>RUN cd A</code> command and opened at the top (root) level by default, so that is where the
 <code>mkdir B_1</code> and <code>mkdir B_2</code> commands took effect.</p>
@@ -1831,9 +1834,9 @@ Dockerfile.</li>
 <h3 id="Building-images-and-.dockerignore-files">Building images and .dockerignore files<a class="anchor-link" href="#Building-images-and-.dockerignore-files"> </a></h3><p>As mentioned in the <a href="#Key_commands">key commands</a> section, to build an image open a terminal in the same directory as
 the Dockerfile to be used and run</p>
 
-<pre><code>sudo docker build tag=name_to_give_image .</code></pre>
+<pre><code>sudo docker build --tag name_to_give_image .</code></pre>
 <p>When an image is built everything in the Dockerfile's directory and below (this is called the "context") is sent to the
-Docker daemon to build the image. The deamon uses the Dockerfile and its context to build the image. If the context
+Docker daemon to build the image. The daemon uses the Dockerfile and its context to build the image. If the context
 contains many large files which aren't needed for building the image (old datafiles, for example) then it is a waste of
 time sending them to the daemon, and doing do can make the process of building an image slow. Files can be excluded from
 the context by listing them in a text file called .dockerignore, and it is good practise to do so.</p>
@@ -1852,38 +1855,38 @@ file_to_exclude.txt</code></pre>
 <li>The file named "file_to_exclude.txt"</li>
 </ul>
 <p><a name="Sharing_images"></a></p>
-<h3 id="Sharing-images">Sharing images<a class="anchor-link" href="#Sharing-images"> </a></h3><p>Docker images can be shared most easily via <a href="https://hub.docker.com/">DockerHub</a>, which requires an account. Say two
+<h3 id="Sharing-images">Sharing images<a class="anchor-link" href="#Sharing-images"> </a></h3><p>Docker images can be shared most easily via <a href="https://hub.docker.com/">Docker Hub</a>, which requires an account. Say two
 researchers, Alice and Bob, are collaborating on a project and Alice wishes to share an image of some of her work with
 Bob.</p>
 <p>To do this Alice must:</p>
 <ul>
 <li>Write a Dockerfile to produce an image of her work</li>
 <li>Build the image. She (being inventive) calls it image_name</li>
-<li>Go to DockerHub and sign up for an account. Say Alice (again, being inventive) chooses the username username_Alice</li>
-<li>Log into DockerHub via the terminal on her machine using <code>sudo docker login</code></li>
+<li>Go to Docker Hub and sign up for an account. Say Alice (again, being inventive) chooses the username username_Alice</li>
+<li>Log into Docker Hub via the terminal on her machine using <code>sudo docker login</code></li>
 <li>Tag the image of her project on her machine via the command line by supplying the name of the image and using the
 pattern <code>username/image_name:version</code>, so Alice runs the command:
 <pre><code>sudo docker tag image_name username_Alice/image_name:version_1</code></pre>
 </li>
-<li>Push the image to her DockerHub account using <code>sudo docker tag push username_Alice/image_name:version_1</code></li>
+<li>Push the image to her Docker Hub account using <code>sudo docker tag push username_Alice/image_name:version_1</code></li>
 <li>Alice's image is now online and can be downloaded. Over to Bob...</li>
 </ul>
 <p>Bob (assuming he already has Docker installed) can open a container from Alice's image simply by running</p>
 
 <pre><code>sudo docker run -i -t username_Alice/image_name:version_1</code></pre>
 <p>Initially Docker will search for this image on Bob's machine, and when it doesn't find it it will <em>automatically</em> search
-DockerHub, download Alice's image, and open the container with Alice's work and environment on Bob's machine.</p>
+Docker Hub, download Alice's image, and open the container with Alice's work and environment on Bob's machine.</p>
 <p><a name="Copying_files_to_and_from_containers"></a></p>
 <h3 id="Copying-files-to-and-from-containers">Copying files to and from containers<a class="anchor-link" href="#Copying-files-to-and-from-containers"> </a></h3><p>Containers act much like virtual machines, as a result copying files into and out of them is not as trivial as copying
 files to different locations within the same computer is.</p>
 <p>A file can be copied from the machine running a container into the container using:</p>
 
-<pre><code>sudo docker cp file_name conteriner_ID:path_to_where_to_put_file/file_name</code></pre>
+<pre><code>sudo docker cp file_name container_ID:path_to_where_to_put_file/file_name</code></pre>
 <p>Recall that container IDs can be obtained using <code>sudo docker container ls</code>.</p>
 <p>A file can be copied from within a container to the machine running the container by running the following command on
 the machine running the container:</p>
 
-<pre><code>sudo docker cp conteriner_ID:path_to_file/file_name path_to_where_to_put_file/file_name</code></pre>
+<pre><code>sudo docker cp container_ID:path_to_file/file_name path_to_where_to_put_file/file_name</code></pre>
 <p>If the second part (the <code>path_to_where_to_put_file/file_name</code>) is substituted for a <code>.</code> then the file will be copied to
 whatever directory the terminal running the command is in.</p>
 <p><a name="Volumes"></a></p>
@@ -1896,7 +1899,7 @@ using "volumes". These store work done within a container even after it is close
 work into future containers.</p>
 <p>To create/use a volume run</p>
 
-<pre><code>sudo docker run -i -t --mount source=volume_name,target=/target_dirctory image_name</code></pre>
+<pre><code>sudo docker run -i -t --mount source=volume_name,target=/target_directory image_name</code></pre>
 <p>Hopefully you will give your volume a more descriptive name than volume_name. A "target" directory is required, only
 work within this directory in the container which will be saved in the volume. Once the researcher is done they can
 close the container as normal. When they come back to the project and want to continue their work they just need to use
@@ -1951,13 +1954,13 @@ From: ubuntu
 
 %runscript
     fortune | cowsay | lolcat</code></pre>
-<p>This 'recipe' uses a docker image as basis (here: ubuntu) installs a few apt packages, modifies a few environment
+<p>This 'recipe' uses a docker image as basis (<code>ubuntu</code>) installs a few apt packages, modifies a few environment
 variables, and specifies the runscript (which is executed using the <code>singularity run</code> command). Details on the
 singularity definition file format can be found in the official <a href="https://www.sylabs.io/docs/">documentation</a>.</p>
 <p>A container image can then be built (requiring root!) via</p>
 
 <pre><code>sudo singularity build lolcow.simg lolcow.def</code></pre>
-<p>This will pull the ubuntu image from dockerhub, run the steps of the recipe in the definition file and produce a single
+<p>This will pull the ubuntu image from Docker Hub, run the steps of the recipe in the definition file and produce a single
 output image file (<code>lolcow.simg</code>). Finally the runscript is executed as</p>
 
 <pre><code>singularity run lolcow.simg</code></pre>
@@ -1987,7 +1990,7 @@ images, this is particularly easy since an image is simply a large file. These c
 megabytes (microcontainers) to several gigabyte and are therefore not suited for being stored in a git repository
 themselves. A free, citable, and long-term solution to storing container images is <a href="https://zenodo.org/">zenodo.org</a>
 which allows up to 50 Gb per repository. Since zenodo is minting DOIs for all content uploaded, the images are
-immediately citable. In contrast to <a href="https://hub.docker.com/">dockerhub</a> (which also only accepts docker images)
+immediately citable. In contrast to <a href="https://hub.docker.com/">Docker Hub</a> (which also only accepts docker images)
 zenodo.org is also clearly geared towards long-term storage and discoverability via a sophisticated metadata system and
 thus ideally suited for storing scientific containers associated with particular analyses since these tend to not change
 over time.</p>
@@ -2030,7 +2033,7 @@ configuration files.</p>
     
     
 
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/es/reproducible_environments/05/virtual-machines.html">
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/reproducible_environments/05/virtual-machines.html">
       〈 <span class="u-margin-right-tiny"></span> Virtual machines
     </a>
   
@@ -2039,7 +2042,7 @@ configuration files.</p>
     
 
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/es/reproducible_environments/07/checklist.html">
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/reproducible_environments/07/checklist.html">
       Checklist <span class="u-margin-right-tiny"></span> 〉
     </a>
   
