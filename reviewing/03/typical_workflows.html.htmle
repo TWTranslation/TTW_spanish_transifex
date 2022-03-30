@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://the-turing-way.netlify.com//es/reviewing/03/typical_workflows.html",
   "headline": "Typical Workflows",
-  "datePublished": "2022-03-30T16:46:28+01:00",
-  "dateModified": "2022-03-30T16:46:28+01:00",
+  "datePublished": "2022-03-30T17:22:20+01:00",
+  "dateModified": "2022-03-30T17:22:20+01:00",
   "description": "        Typical Workflows    Typical workflows (with particular reference to Github) Formal vs informal reviews This section focuses on the typical workflows...",
   "author": {
     "@type": "Person",
