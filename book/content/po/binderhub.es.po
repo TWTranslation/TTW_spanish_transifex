@@ -1,543 +1,872 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Place Holder <test@test.com>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Camila Rangel Smith <camila.rangel.smith@gmail.com>, 2020
+# Fabricio Jiménez <fabricioajm@gmail.com>, 2021
+# Marilina Santero <marilinasantero@gmail.com>, 2021
+# Reina Camacho Toro <rcamacho07@gmail.com>, 2021
+# Guiomar Niso <guiomar.niso@gmail.com>, 2021
+# Alejandro © <acoca@turing.ac.uk>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: content\n"
 "Report-Msgid-Bugs-To: https://github.com/haiwen/seafile-docs/issues\n"
 "POT-Creation-Date: 2020-02-05 19:08:03+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Place Holder <test@test.com>\n"
-"Language-Team: Spanish <LL@li.org>\n"
+"PO-Revision-Date: 2020-04-07 14:21+0000\n"
+"Last-Translator: Alejandro © <acoca@turing.ac.uk>, 2021\n"
+"Language-Team: Spanish (https://www.transifex.com/theturingway/teams/107194/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+# header
 #: binderhub/binderhub.md:1
-# header
 msgid "# BinderHub"
-msgstr ""
+msgstr "# BinderHub"
 
-#: binderhub/binderhub.md:3
 # header
+#: binderhub/binderhub.md:3
 msgid "## Prerequisites / recommended skill level"
-msgstr ""
+msgstr "## Pre-requisitos / nivel de conocimiento recomendado"
 
 #: binderhub/binderhub.md:5
 msgid "| Prerequisite | Importance | Notes |"
-msgstr ""
+msgstr "| Pre-requisitos | Importancia | Notas |"
 
 #: binderhub/binderhub.md:6
 msgid "|---|---|---|"
-msgstr ""
+msgstr "|---|---|---|"
 
 #: binderhub/binderhub.md:7
-msgid "| [Version Control](/version_control/version_control) | Very Important | |"
+msgid ""
+"| [Version Control](/version_control/version_control) | Very Important | |"
 msgstr ""
+"5\n"
+"| [Control de versión](/version_control/version_control) | Muy importante | |"
 
 #: binderhub/binderhub.md:8
-msgid "| [Reproducible Environments](/reproducible_environments/reproducible_environments) | Very Important | Particularly read the section on [Binder](https://the-turing-way.netlify.com/reproducible_environments/reproducible_environments.html#Binder_section). |"
+msgid ""
+"| [Reproducible "
+"Environments](/reproducible_environments/reproducible_environments) | Very "
+"Important | Particularly read the section on [Binder](https://the-turing-"
+"way.netlify.com/reproducible_environments/reproducible_environments.html#Binder_section)."
+" |"
 msgstr ""
+"| [Ambientes "
+"reproducibles](/reproducible_environments/reproducible_environments) | Muy "
+"importante | Recomendamos especialmente leer la sección sobre "
+"[Binder](https://the-turing-"
+"way.netlify.com/reproducible_environments/reproducible_environments.html#Binder_section)."
+" |"
 
+# header
 #: binderhub/binderhub.md:10
-# header
 msgid "## Table of Contents"
-msgstr ""
+msgstr "## Tabla de contenidos"
 
+# unordered list
 #: binderhub/binderhub.md:12
-# unordered list
 msgid "- [Summary](#summary)"
-msgstr ""
+msgstr "- [Resumen](#summary)"
 
+# unordered list
 #: binderhub/binderhub.md:13
-# unordered list
-msgid "- [How this will help you/ why this is useful](#how-this-will-help-you-why-this-is-useful)"
+msgid ""
+"- [How this will help you/ why this is useful](#how-this-will-help-you-why-"
+"this-is-useful)"
 msgstr ""
+"- [Cómo esto puede ayudarte/ porqué esto es útil](#how-this-will-help-you-"
+"why-this-is-useful)"
 
+# unordered list
 #: binderhub/binderhub.md:14
-# unordered list
-msgid "- [What is BinderHub and why is it good for Reproducibility?](#what-is-binderhub-and-why-is-it-good-for-reproducibility)"
+msgid ""
+"- [What is BinderHub and why is it good for Reproducibility?](#what-is-"
+"binderhub-and-why-is-it-good-for-reproducibility)"
 msgstr ""
+"- [¿Qué es BinderHub y porqué es bueno para la reproducibilidad?](#what-is-"
+"binderhub-and-why-is-it-good-for-reproducibility)"
 
+# unordered list
 #: binderhub/binderhub.md:15
-# unordered list
 msgid "- [How does a BinderHub work?](#how-does-a-binderhub-work)"
-msgstr ""
+msgstr "- [¿Cómo funciona BinderHub ?](#how-does-a-binderhub-work)"
 
+# unordered list
 #: binderhub/binderhub.md:16
-# unordered list
 msgid "  - [Compute Resources](#compute-resources)"
-msgstr ""
+msgstr " - [Recursos computacionales](#compute-resources)"
 
+# unordered list
 #: binderhub/binderhub.md:17
-# unordered list
 msgid "  - [Kubernetes](#kubernetes)"
-msgstr ""
+msgstr "- [Kubernetes](#kubernetes)"
 
+# unordered list
 #: binderhub/binderhub.md:18
-# unordered list
 msgid "  - [Helm](#helm)"
-msgstr ""
+msgstr "- [Helm](#helm)"
 
+# unordered list
 #: binderhub/binderhub.md:19
-# unordered list
 msgid "  - [JupyterHub](#jupyterhub)"
-msgstr ""
+msgstr " - [JupyterHub](#jupyterhub)"
 
+# unordered list
 #: binderhub/binderhub.md:20
-# unordered list
 msgid "  - [repo2docker](#repo2docker)"
-msgstr ""
+msgstr " - [JupyterHub](#jupyterhub)"
 
+# unordered list
 #: binderhub/binderhub.md:21
-# unordered list
-msgid "  - [What happens when a Binder link is clicked?](#what-happens-when-a-binder-link-is-clicked)"
+msgid ""
+"  - [What happens when a Binder link is clicked?](#what-happens-when-a-"
+"binder-link-is-clicked)"
 msgstr ""
+"  - [¿Qué sucede cuando haces clic en link Binder?](#what-happens-when-a-"
+"binder-link-is-clicked)"
 
+# unordered list
 #: binderhub/binderhub.md:22
-# unordered list
-msgid "- [Why would you build your own BinderHub?](#why-would-you-build-your-own-binderhub)"
+msgid ""
+"- [Why would you build your own BinderHub?](#why-would-you-build-your-own-"
+"binderhub)"
 msgstr ""
+"- [¿Por qué deberías crear tu propio BinderHub?](#why-would-you-build-your-"
+"own-binderhub)"
 
+# unordered list
 #: binderhub/binderhub.md:23
-# unordered list
-msgid "  - [Issues you may face when deploying a BinderHub](#issues-you-may-face-when-deploying-a-binderhub)"
+msgid ""
+"  - [Issues you may face when deploying a BinderHub](#issues-you-may-face-"
+"when-deploying-a-binderhub)"
 msgstr ""
+"  - [Problemas con los cuales probablemente te enfrentes al utilizar un "
+"BinderHub](#issues-you-may-face-when-deploying-a-binderhub)"
 
+# unordered list
 #: binderhub/binderhub.md:24
-# unordered list
 msgid "- [Further reading](#further-reading)"
-msgstr ""
+msgstr "- [Otras lecturas](#otras-lecturas)"
 
+# unordered list
 #: binderhub/binderhub.md:25
-# unordered list
 msgid "- [Definitions/glossary](#definitionsglossary)"
-msgstr ""
+msgstr "- [Definiciones/glosario](#definitionsglossary)"
 
-#: binderhub/binderhub.md:26
 # unordered list
+#: binderhub/binderhub.md:26
 msgid "- [Bibliography](#bibliography)"
-msgstr ""
+msgstr "- [Bibliografía](#bibliography)"
 
-#: binderhub/binderhub.md:28
 # header
+#: binderhub/binderhub.md:28
 msgid "## Summary"
-msgstr ""
+msgstr "## Resumen"
 
 #: binderhub/binderhub.md:30
-msgid "This chapter will discuss [BinderHub](https://binderhub.readthedocs.io/en/latest/index.html), which is the cloud technology powering [Binder](https://mybinder.readthedocs.io/en/latest/)."
+msgid ""
+"This chapter will discuss "
+"[BinderHub](https://binderhub.readthedocs.io/en/latest/index.html), which is"
+" the cloud technology powering "
+"[Binder](https://mybinder.readthedocs.io/en/latest/)."
 msgstr ""
+"En este capítulo se discutirá "
+"[BinderHub](https://binderhub.readthedocs.io/en/latest/index.html), que es "
+"la tecnología en la nube impulsada por "
+"[Binder](https://mybinder.readthedocs.io/en/latest/)."
 
 #: binderhub/binderhub.md:31
-msgid "We will cover the technologies and tools that BinderHub utilises and the resources you will need to setup your own BinderHub."
+msgid ""
+"We will cover the technologies and tools that BinderHub utilises and the "
+"resources you will need to setup your own BinderHub."
 msgstr ""
+"Abarcaremos las tecnologías y herramientas que utiliza BinderHub y los "
+"recursos que necesitarás para configurar tu propio BinderHub."
 
 #: binderhub/binderhub.md:33
-msgid "This chapter is primarily aimed at Research Software Engineers and IT Services who wish to provide a BinderHub as a service to a group of researchers."
+msgid ""
+"This chapter is primarily aimed at Research Software Engineers and IT "
+"Services who wish to provide a BinderHub as a service to a group of "
+"researchers."
 msgstr ""
+"Este capítulo está dirigido principalmente a especialistas en ingeniería de "
+"sistemas y servicios de TI que deseen proporcionar un BinderHub como "
+"servicio a un grupo de investigadores."
 
 #: binderhub/binderhub.md:34
 msgid "Though anyone can build a BinderHub."
-msgstr ""
+msgstr "Aunque cualquiera puede construir un BinderHub"
 
-#: binderhub/binderhub.md:36
 # header
+#: binderhub/binderhub.md:36
 msgid "## How this will help you/ why this is useful"
-msgstr ""
+msgstr "## Cómo te ayudará esto/ por qué esto es útil"
 
 #: binderhub/binderhub.md:38
-msgid "Reading this chapter will give you a clearer picture of how Binder services (such as [mybinder.org](https://mybinder.org)) operate, the technologies powering BinderHub and how they interact with one another."
+msgid ""
+"Reading this chapter will give you a clearer picture of how Binder services "
+"(such as [mybinder.org](https://mybinder.org)) operate, the technologies "
+"powering BinderHub and how they interact with one another."
 msgstr ""
+"La lectura de este capítulo te dará una idea más clara de cómo funcionan los"
+" servicios de Binder ([mybinder.org](https://mybinder.org)), las tecnologías"
+" que impulsan BinderHub y cómo interactúan entre sí."
 
 #: binderhub/binderhub.md:39
-msgid "This chapter also covers reasons why you might build your own BinderHub, rather than using the public service at mybinder.org."
+msgid ""
+"This chapter also covers reasons why you might build your own BinderHub, "
+"rather than using the public service at mybinder.org."
 msgstr ""
+"Este capítulo también cubre las razones por las que podrías construir tu "
+"propio BinderHub, en lugar de utilizar el servicio público en mybinder.org."
 
-#: binderhub/binderhub.md:41
 # header
+#: binderhub/binderhub.md:41
 msgid "## What is BinderHub and why is it good for Reproducibility?"
-msgstr ""
+msgstr "## ¿Qué es BinderHub y porqué es bueno para la reproducibilidad?"
 
 #: binderhub/binderhub.md:43
-msgid "[BinderHub](https://binderhub.readthedocs.io/en/latest/index.html) is a cloud-based technology that can launch a repository of code (from GitHub, GitLab, and others) in a browser window such that the code can be executed and interacted with."
+msgid ""
+"[BinderHub](https://binderhub.readthedocs.io/en/latest/index.html) is a "
+"cloud-based technology that can launch a repository of code (from GitHub, "
+"GitLab, and others) in a browser window such that the code can be executed "
+"and interacted with."
 msgstr ""
+"[BinderHub](https://binderhub.readthedocs.io/en/latest/index.html) es una "
+"tecnología basada en la nube que permite el lanzamiento de un repositorio de"
+" código (desde GitHub, GitLab, entre otros) en una ventana del navegador de "
+"forma que se pueda ejecutar el código e interactuar con él."
 
 #: binderhub/binderhub.md:44
-msgid "A unique URL is generated allowing the interactive code to be easily shared."
+msgid ""
+"A unique URL is generated allowing the interactive code to be easily shared."
 msgstr ""
+"Se genera una URL única que permite compartir fácilmente el código "
+"interactivo."
 
 #: binderhub/binderhub.md:46
-msgid "The purpose of these Binder instances is to promote reproducibility in research projects by encouraging researchers to document their software dependencies and produce fun, interactive environments!"
+msgid ""
+"The purpose of these Binder instances is to promote reproducibility in "
+"research projects by encouraging researchers to document their software "
+"dependencies and produce fun, interactive environments!"
 msgstr ""
+"El objetivo de las instancias de Binder es promover la reproducibilidad en "
+"los proyectos de investigación animando a los investigadores a documentar "
+"sus dependencias de software y a producir entornos divertidos e "
+"interactivos."
 
 #: binderhub/binderhub.md:48
-msgid "Binder, as a user interface, is useful for reproducibility because the code needs to be version controlled and the computational environment needs to be documented in order to benefit from the functionality of Binder."
+msgid ""
+"Binder, as a user interface, is useful for reproducibility because the code "
+"needs to be version controlled and the computational environment needs to be"
+" documented in order to benefit from the functionality of Binder."
 msgstr ""
+"Binder, como interfaz de usuario, es útil para la reproducibilidad porque el"
+" código necesita ser controlado por versiones y el entorno computacional "
+"necesita ser documentado para poder beneficiarse de la funcionalidad de "
+"Binder."
 
 #: binderhub/binderhub.md:49
-msgid "Each change to the code repository also forces a new build of the Binder instance."
+msgid ""
+"Each change to the code repository also forces a new build of the Binder "
+"instance."
 msgstr ""
+"Cada cambio en el repositorio de código también fuerza una nueva "
+"construcción de la instancia de Binder."
 
 #: binderhub/binderhub.md:50
-msgid "This acts as a proxy for continuous integration of the computational environment as the Binder instance will break if the configuration file is not updated."
+msgid ""
+"This acts as a proxy for continuous integration of the computational "
+"environment as the Binder instance will break if the configuration file is "
+"not updated."
 msgstr ""
+"Esto actúa como un proxy para la integración continua del entorno "
+"computacional, ya que la instancia de Binder se romperá si el archivo de "
+"configuración no se actualiza."
 
 #: binderhub/binderhub.md:52
-msgid "Learn more about Continuous Integration in [this chapter](/continuous_integration/continuous_integration)."
+msgid ""
+"Learn more about Continuous Integration in [this "
+"chapter](/continuous_integration/continuous_integration)."
 msgstr ""
+"Aprenda más sobre la integración continua en [este "
+"capítulo](/continuous_integration/continuous_integration)."
 
-#: binderhub/binderhub.md:54
 # header
+#: binderhub/binderhub.md:54
 msgid "## How does a BinderHub work?"
-msgstr ""
+msgstr "## ¿Cómo funciona un BinderHub?"
 
 #: binderhub/binderhub.md:56
-msgid "BinderHub relies on different tools and resources in order to create and launch the Binder instances."
+msgid ""
+"BinderHub relies on different tools and resources in order to create and "
+"launch the Binder instances."
 msgstr ""
+"BinderHub se apoya en diferentes herramientas y recursos para crear y lanzar"
+" las instancias de Binder."
 
 #: binderhub/binderhub.md:58
-msgid "For more information, see this [high-level explanation of the BinderHub architecture](https://binderhub.readthedocs.io/en/latest/overview.html)."
+msgid ""
+"For more information, see this [high-level explanation of the BinderHub "
+"architecture](https://binderhub.readthedocs.io/en/latest/overview.html)."
 msgstr ""
+"Para más información, consulte esta [explicación de alto nivel de la "
+"arquitectura de "
+"BinderHub](https://binderhub.readthedocs.io/en/latest/overview.html)."
 
 #: binderhub/binderhub.md:60
-msgid "| ![/figures/cloud_neutral_binderhub.png](https://zenodo.org/api/iiif/v2/e4125eaf-b456-4097-85fc-6a2e80482d1c:96c70193-2f9e-442d-8cf8-21485d8864e1:1728_TURI_Book%20sprint_45%20repo2docker_040619_v2_MK.jpg/full/750,/0/default.jpg) |"
+msgid ""
+"| "
+"![/figures/cloud_neutral_binderhub.png](https://zenodo.org/api/iiif/v2/e4125eaf-b456-4097-85fc-6a2e80482d1c:96c70193-2f9e-442d-8cf8-21485d8864e1:1728_TURI_Book%20sprint_45%20repo2docker_040619_v2_MK.jpg/full/750,/0/default.jpg)"
+" |"
 msgstr ""
+"| "
+"![/figures/cloud_neutral_binderhub.png](https://zenodo.org/api/iiif/v2/e4125eaf-b456-4097-85fc-6a2e80482d1c:96c70193-2f9e-442d-8cf8-21485d8864e1:1728_TURI_Book%20sprint_45%20repo2docker_040619_v2_MK.jpg/full/750,/0/default.jpg)"
+" |"
 
 #: binderhub/binderhub.md:61
 msgid "|:---:|"
-msgstr ""
+msgstr "|:---:|"
 
 #: binderhub/binderhub.md:62
-msgid "| A representation of the BinderHub architecture. This image was created by [Scriberia](http://www.scriberia.co.uk/) for The Turing Way community and is used under a CC-BY licence. |"
+msgid ""
+"| A representation of the BinderHub architecture. This image was created by "
+"[Scriberia](http://www.scriberia.co.uk/) for The Turing Way community and is"
+" used under a CC-BY licence. |"
 msgstr ""
+"| Una representación de la arquitectura de BinderHub. Esta imagen fue creada"
+" por [Scriberia](http://www.scriberia.co.uk/) para la comunidad The Turing "
+"Way y es usada bajo una licencia CC-BY. |"
 
-#: binderhub/binderhub.md:64
 # header
+#: binderhub/binderhub.md:64
 msgid "### Compute Resources"
-msgstr ""
+msgstr "### Recursos computacionales"
 
 #: binderhub/binderhub.md:66
-msgid "BinderHub is cloud-neutral which means it can be deployed on any cloud platform."
+msgid ""
+"BinderHub is cloud-neutral which means it can be deployed on any cloud "
+"platform."
 msgstr ""
+"BinderHub es neutral de la nube, lo que significa que puede desplegarse en "
+"cualquier plataforma de nube."
 
 #: binderhub/binderhub.md:67
-msgid "Therefore, the minimum requirement is a subscription to a cloud platform of your choosing."
+msgid ""
+"Therefore, the minimum requirement is a subscription to a cloud platform of "
+"your choosing."
 msgstr ""
+"Por lo tanto, el requisito mínimo es una suscripción a una plataforma en la "
+"nube de tu elección."
 
 #: binderhub/binderhub.md:69
-msgid "In fact, BinderHub is not dependent on cloud-hosting at all and can be deployed onto an on-premise computing system."
+msgid ""
+"In fact, BinderHub is not dependent on cloud-hosting at all and can be "
+"deployed onto an on-premise computing system."
 msgstr ""
+"De hecho, BinderHub no depende en absoluto del alojamiento en la nube y "
+"puede desplegarse en un sistema informático local."
 
-#: binderhub/binderhub.md:71
 # header
+#: binderhub/binderhub.md:71
 msgid "### Kubernetes"
-msgstr ""
+msgstr "### Kubernetes"
 
 #: binderhub/binderhub.md:73
-msgid "[Kubernetes](https://kubernetes.io/) is a system for automating deployment, scaling (making more or fewer copies), and management of containers across a compute cluster (it doesn't have to be cloud-based)."
+msgid ""
+"[Kubernetes](https://kubernetes.io/) is a system for automating deployment, "
+"scaling (making more or fewer copies), and management of containers across a"
+" compute cluster (it doesn't have to be cloud-based)."
 msgstr ""
+"[Kubernetes](https://kubernetes.io/) es un sistema para automatizar el "
+"“deployment” (despliegue), el escalado (hacer más o menos copias) y la "
+"gestión de contenedores en un clúster computacional (no tiene por qué estar "
+"basado en la nube)."
 
 #: binderhub/binderhub.md:74
-msgid "BinderHub uses Kubernetes to manage the resources requested by the users of the Binder service, and to support the tools that build the environments."
+msgid ""
+"BinderHub uses Kubernetes to manage the resources requested by the users of "
+"the Binder service, and to support the tools that build the environments."
 msgstr ""
+"BinderHub utiliza Kubernetes para gestionar los recursos solicitados por los"
+" usuarios del servicio Binder, y para dar soporte a las herramientas que "
+"construyen los entornos."
 
-#: binderhub/binderhub.md:76
 # header
+#: binderhub/binderhub.md:76
 msgid "### Helm"
-msgstr ""
+msgstr "### Helm"
 
 #: binderhub/binderhub.md:78
 msgid "[Helm](https://helm.sh/) is a package manager for Kubernetes."
-msgstr ""
+msgstr "[Helm](https://helm.sh/) es un gestor de paquetes para Kubernetes."
 
 #: binderhub/binderhub.md:79
-msgid "Packages come in the form of *Charts* which are a set of instructions to deploy, upgrade and manage applications running on a Kubernetes cluster."
+msgid ""
+"Packages come in the form of *Charts* which are a set of instructions to "
+"deploy, upgrade and manage applications running on a Kubernetes cluster."
 msgstr ""
+"Los paquetes vienen en forma de *Charts* que son un conjunto de "
+"instrucciones para desplegar, actualizar y gestionar las aplicaciones que se"
+" ejecutan en un clúster Kubernetes."
 
 #: binderhub/binderhub.md:80
-msgid "They can make installing and managing Kubernetes applications much easier and specific Charts for projects can be published online."
+msgid ""
+"They can make installing and managing Kubernetes applications much easier "
+"and specific Charts for projects can be published online."
 msgstr ""
+"Pueden hacer que la instalación y la gestión de las aplicaciones Kubernetes "
+"sea mucho más fácil y Charts específicos de los proyectos pueden ser "
+"publicados."
 
 #: binderhub/binderhub.md:81
-msgid "For example, the Helm Chart for BinderHub is available [here](https://jupyterhub.github.io/helm-chart/#development-releases-binderhub)."
+msgid ""
+"For example, the Helm Chart for BinderHub is available "
+"[here](https://jupyterhub.github.io/helm-chart/#development-releases-"
+"binderhub)."
 msgstr ""
+"Por ejemplo, un Helm Chart para BinderHub está disponible "
+"[aquí](https://jupyterhub.github.io/helm-chart/#development-releases-"
+"binderhub)."
 
-#: binderhub/binderhub.md:83
 # header
+#: binderhub/binderhub.md:83
 msgid "### JupyterHub"
-msgstr ""
+msgstr "### JupyterHub"
 
 #: binderhub/binderhub.md:85
-msgid "[JupyterHub](https://jupyter.org/hub) is a multi-user server for Jupyter Notebooks and containers alike."
+msgid ""
+"[JupyterHub](https://jupyter.org/hub) is a multi-user server for Jupyter "
+"Notebooks and containers alike."
 msgstr ""
+"[JupyterHub](https://jupyter.org/hub) es un servidor multiusuario para "
+"Jupyter Notebooks y contenedores."
 
 #: binderhub/binderhub.md:86
-msgid "In the context of Binder, the JupyterHub's main role is to connect the user's browser to the BinderHub instance running on the Kubernetes cluster."
+msgid ""
+"In the context of Binder, the JupyterHub's main role is to connect the "
+"user's browser to the BinderHub instance running on the Kubernetes cluster."
 msgstr ""
+"En el contexto de Binder, la función principal de JupyterHub es conectar el "
+"navegador del usuario con la instancia de BinderHub que se ejecuta en el "
+"clúster de Kubernetes."
 
 #: binderhub/binderhub.md:87
-msgid "However, the JupyterHub can be further customised to provide greater control over the operation of the BinderHub."
+msgid ""
+"However, the JupyterHub can be further customised to provide greater control"
+" over the operation of the BinderHub."
 msgstr ""
+"Sin embargo, el JupyterHub puede personalizarse aún más para proporcionar un"
+" mayor control sobre el funcionamiento del BinderHub."
 
-#: binderhub/binderhub.md:89
 # header
+#: binderhub/binderhub.md:89
 msgid "### repo2docker"
-msgstr ""
+msgstr "### repo2docker"
 
 #: binderhub/binderhub.md:91
-msgid "[repo2docker](https://repo2docker.readthedocs.io/en/latest/?badge=latest) is a tool that automatically builds a Docker image from a code repository given a configuration file."
+msgid ""
+"[repo2docker](https://repo2docker.readthedocs.io/en/latest/?badge=latest) is"
+" a tool that automatically builds a Docker image from a code repository "
+"given a configuration file."
 msgstr ""
+"[repo2docker](https://repo2docker.readthedocs.io/en/latest/?badge=latest) es"
+" una herramienta que construye de forma automática una imagen Docker a "
+"partir de un repositorio de código de acuerdo a un archivo de configuración."
 
 #: binderhub/binderhub.md:92
-msgid "This Docker image will contain all of the code, data and resources that are listed in the repository."
+msgid ""
+"This Docker image will contain all of the code, data and resources that are "
+"listed in the repository."
 msgstr ""
+"Esta imagen Docker contendrá todo el código, los datos y los recursos que "
+"estan listados en el repositorio."
 
 #: binderhub/binderhub.md:93
-msgid "All the software required to run the code will also be preinstalled from the configuration file."
+msgid ""
+"All the software required to run the code will also be preinstalled from the"
+" configuration file."
 msgstr ""
+"Todo el software necesario para ejecutar el código también estará "
+"preinstalado desde el archivo de configuración."
 
 #: binderhub/binderhub.md:95
-msgid "BinderHub can be thought of as thin layer that sits on top of repo2docker and JupyterHub, orchestrating their interactions and resolving URLs."
+msgid ""
+"BinderHub can be thought of as thin layer that sits on top of repo2docker "
+"and JupyterHub, orchestrating their interactions and resolving URLs."
 msgstr ""
+"BinderHub puede considerarse como una fina capa que se asienta sobre "
+"repo2docker y JupyterHub, orquestando sus interacciones y resolviendo las "
+"URL."
 
+# header
 #: binderhub/binderhub.md:97
-# header
 msgid "### What happens when a Binder link is clicked?"
-msgstr ""
+msgstr "### ¿Qué sucede cuando se hace clic en un enlace de Binder?"
 
+# ordered list
 #: binderhub/binderhub.md:99
-# ordered list
 msgid "1. The link to the repository is resolved by BinderHub."
-msgstr ""
+msgstr "1. El enlace al repositorio está resuelto por BinderHub."
 
+# ordered list
 #: binderhub/binderhub.md:100
-# ordered list
-msgid "2. BinderHub searches for a Docker image relating to the provided reference (for example, git commit hash, branch or tag)."
+msgid ""
+"2. BinderHub searches for a Docker image relating to the provided reference "
+"(for example, git commit hash, branch or tag)."
 msgstr ""
+"2. BinderHub busca una imagen Docker relacionada con la referencia "
+"proporcionada (por ejemplo, el hash del commit de git, la rama o la "
+"etiqueta)."
 
+# ordered list
 #: binderhub/binderhub.md:101
-# ordered list
-msgid "3. **If a Docker image is not found**, BinderHub requests resources from the Kubernetes cluster to run repo2docker to do the following:"
+msgid ""
+"3. **If a Docker image is not found**, BinderHub requests resources from the"
+" Kubernetes cluster to run repo2docker to do the following:"
 msgstr ""
+"3. **Si no se encuentra una imagen Docker**, BinderHub solicita recursos del"
+" clúster Kubernetes para ejecutar repo2docker para hacer lo siguiente:"
 
+# unordered list
 #: binderhub/binderhub.md:102
-# unordered list
 msgid "   - Fetch the repository,"
-msgstr ""
+msgstr "- Recoger el repositorio,"
 
+# unordered list
 #: binderhub/binderhub.md:103
-# unordered list
-msgid "   - Build a Docker image containing the software requested in the configuration file,"
+msgid ""
+"   - Build a Docker image containing the software requested in the "
+"configuration file,"
 msgstr ""
+"- Construir una imagen Docker que contenga el software solicitado en el "
+"archivo de configuración,"
 
+# unordered list
 #: binderhub/binderhub.md:104
-# unordered list
 msgid "   - Push that image to the Docker registry."
-msgstr ""
+msgstr " - Empujar esa imagen al registro de Docker."
 
+# ordered list
 #: binderhub/binderhub.md:105
-# ordered list
 msgid "4. BinderHub sends the Docker image to JupyterHub."
-msgstr ""
+msgstr "4. BinderHub envía la imagen Docker a JupyterHub."
 
+# ordered list
 #: binderhub/binderhub.md:106
-# ordered list
-msgid "5. JupyterHub requests resources from the Kubernetes cluster to serve the Docker image."
+msgid ""
+"5. JupyterHub requests resources from the Kubernetes cluster to serve the "
+"Docker image."
 msgstr ""
+"5. JupyterHub solicita recursos del clúster Kubernetes para servir la imagen"
+" Docker."
 
+# ordered list
 #: binderhub/binderhub.md:107
-# ordered list
-msgid "6. JupyterHub connects the user's browser to the running Docker environment."
+msgid ""
+"6. JupyterHub connects the user's browser to the running Docker environment."
 msgstr ""
+"6. JupyterHub conecta el navegador del usuario con el entorno Docker en "
+"ejecución."
 
+# ordered list
 #: binderhub/binderhub.md:108
-# ordered list
-msgid "7. JupyterHub monitors the container for activity and destroys it after a period of inactivity."
+msgid ""
+"7. JupyterHub monitors the container for activity and destroys it after a "
+"period of inactivity."
 msgstr ""
+"7. JupyterHub controla la actividad del contenedor y lo destruye después de "
+"un período de inactividad."
 
-#: binderhub/binderhub.md:110
 # header
+#: binderhub/binderhub.md:110
 msgid "## Why would you build your own BinderHub?"
-msgstr ""
+msgstr "## ¿Por qué construir tu propio BinderHub?"
 
 #: binderhub/binderhub.md:112
-msgid "[mybinder.org](https://mybinder.org/) is the free, public BinderHub that hosts almost 100k Binder launches per week."
+msgid ""
+"[mybinder.org](https://mybinder.org/) is the free, public BinderHub that "
+"hosts almost 100k Binder launches per week."
 msgstr ""
+"[mybinder.org](https://mybinder.org/) es un BinderHub público y gratuito que"
+" alberga casi 100.000 lanzamientos de Binder a la semana."
 
 #: binderhub/binderhub.md:113
 msgid "Why might you want to build your own?"
-msgstr ""
+msgstr "¿Por qué querrías construir el tuyo?"
 
 #: binderhub/binderhub.md:115
-msgid "Binder is an open source project maintained by volunteers and as such they ask that users stay within certain computational limitations in order to keep running costs as low as possible whilst still providing a usable service."
+msgid ""
+"Binder is an open source project maintained by volunteers and as such they "
+"ask that users stay within certain computational limitations in order to "
+"keep running costs as low as possible whilst still providing a usable "
+"service."
 msgstr ""
+"Binder es un proyecto de código abierto mantenido por voluntarios y, como "
+"tal, piden a los usuarios que se mantengan dentro de ciertas limitaciones "
+"computacionales con el fin de mantener los costes de funcionamiento lo más "
+"bajos posible sin dejar de ofrecer un servicio utilizable."
 
 #: binderhub/binderhub.md:116
-msgid "By hosting your own BinderHub, you can offer your users much more flexible and tailored resources."
+msgid ""
+"By hosting your own BinderHub, you can offer your users much more flexible "
+"and tailored resources."
 msgstr ""
+"Al alojar su propio BinderHub, puede ofrecer a sus usuarios recursos mucho "
+"más flexibles y personalizados."
 
 #: binderhub/binderhub.md:118
 msgid "These customisations could include:"
-msgstr ""
+msgstr "Estas personalizaciones podrían incluir:"
 
+# unordered list
 #: binderhub/binderhub.md:120
-# unordered list
 msgid "- authentication,"
-msgstr ""
+msgstr "- la autentificación,"
 
+# unordered list
 #: binderhub/binderhub.md:121
-# unordered list
 msgid "- greater computational resources per user,"
-msgstr ""
+msgstr "- mayores recursos computacionales por usuario,"
 
+# unordered list
 #: binderhub/binderhub.md:122
-# unordered list
 msgid "- bespoke library stacks and packages,"
-msgstr ""
+msgstr "- conjuntos y paquetes de la biblioteca a la medida,"
 
+# unordered list
 #: binderhub/binderhub.md:123
-# unordered list
 msgid "- allowing access to private repos,"
-msgstr ""
+msgstr "- permitiendo el acceso a los repositorios privados,"
 
+# unordered list
 #: binderhub/binderhub.md:124
-# unordered list
 msgid "- persistent storage for users,"
-msgstr ""
+msgstr "- almacenamiento persistente para los usuarios,"
 
-#: binderhub/binderhub.md:125
 # unordered list
+#: binderhub/binderhub.md:125
 msgid "- restrict sharing within a certain institution or team."
 msgstr ""
+"- restringir el intercambio dentro de una determinada institución o equipo."
 
-#: binderhub/binderhub.md:127
 # header
+#: binderhub/binderhub.md:127
 msgid "### Issues you may face when deploying a BinderHub"
-msgstr ""
+msgstr "### Problemas que puede encontrar al implementar un BinderHub"
 
 #: binderhub/binderhub.md:129
-msgid "BinderHubs are becoming increasingly popular amongst universities and research institutes."
+msgid ""
+"BinderHubs are becoming increasingly popular amongst universities and "
+"research institutes."
 msgstr ""
+"Los BinderHubs son cada vez más populares entre las universidades e "
+"institutos de investigación."
 
 #: binderhub/binderhub.md:130
-msgid "This is because they can facilitate multiple instances of the same set of notebooks for use in a tutorial or workshop setting."
+msgid ""
+"This is because they can facilitate multiple instances of the same set of "
+"notebooks for use in a tutorial or workshop setting."
 msgstr ""
+"Esto se debe a su capacidad de facilitar múltiples instancias del mismo "
+"conjunto de cuadernos para su uso en un entorno de tutoría o taller."
 
 #: binderhub/binderhub.md:132
-msgid "If you are deploying a cloud-hosted BinderHub on behalf of your organisation, you may need specific permissions on your organisation's cloud platform subscription."
+msgid ""
+"If you are deploying a cloud-hosted BinderHub on behalf of your "
+"organisation, you may need specific permissions on your organisation's cloud"
+" platform subscription."
 msgstr ""
+"Si estás desplegando un BinderHub alojado en la nube en nombre de tu "
+"organización, es posible que necesites permisos específicos en la "
+"suscripción a la plataforma en la nube de tu organización."
 
 #: binderhub/binderhub.md:133
-msgid "Which permissions you require will vary based on the cloud platform you have access to and your IT Services policies."
+msgid ""
+"Which permissions you require will vary based on the cloud platform you have"
+" access to and your IT Services policies."
 msgstr ""
+"Los permisos que necesite variarán en función de la plataforma en la nube a "
+"la que tengas acceso y de sus políticas de servicios de informática."
 
 #: binderhub/binderhub.md:134
-msgid "At minimum, you'll need to be able to assign [Role Based Access Control (RBAC)](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview) to your resources so they can act autonomously in order to manage user traffic."
+msgid ""
+"At minimum, you'll need to be able to assign [Role Based Access Control "
+"(RBAC)](https://docs.microsoft.com/en-us/azure/role-based-access-"
+"control/overview) to your resources so they can act autonomously in order to"
+" manage user traffic."
 msgstr ""
+"Como mínimo, necesitará poder asignar [Role Based Access Control "
+"(RBAC)](https://docs.microsoft.com/en-us/azure/role-based-access-"
+"control/overview) a tus recursos para que puedan actuar de forma autónoma "
+"para gestionar el tráfico de usuarios."
 
-#: binderhub/binderhub.md:136
 # header
+#: binderhub/binderhub.md:136
 msgid "## Further reading"
-msgstr ""
+msgstr "## Lecturas complementarias"
 
-#: binderhub/binderhub.md:138
 # unordered list
+#: binderhub/binderhub.md:138
 msgid "- [Binder documentation](https://mybinder.readthedocs.io/en/latest/)"
 msgstr ""
+"- [Documentación de Binder](https://mybinder.readthedocs.io/en/latest/)"
 
+# unordered list
 #: binderhub/binderhub.md:139
-# unordered list
-msgid "- [BinderHub documentation](https://binderhub.readthedocs.io/en/latest/index.html)"
+msgid ""
+"- [BinderHub "
+"documentation](https://binderhub.readthedocs.io/en/latest/index.html)"
 msgstr ""
+"- [Documentación de "
+"Binder](https://binderhub.readthedocs.io/en/latest/index.html)"
 
+# unordered list
 #: binderhub/binderhub.md:140
-# unordered list
-msgid "- [Zero-to-JupyterHub with Kubernetes documentation](https://zero-to-jupyterhub.readthedocs.io/en/latest/index.html)"
+msgid ""
+"- [Zero-to-JupyterHub with Kubernetes documentation](https://zero-to-"
+"jupyterhub.readthedocs.io/en/latest/index.html)"
 msgstr ""
+"- [Documentación iniciando de cero a JupyterHub con "
+"Kubernetes](https://zero-to-jupyterhub.readthedocs.io/en/latest/index.html)"
 
+# unordered list
 #: binderhub/binderhub.md:141
-# unordered list
-msgid "- [JupyterHub documentation](https://jupyterhub.readthedocs.io/en/stable/)"
+msgid ""
+"- [JupyterHub documentation](https://jupyterhub.readthedocs.io/en/stable/)"
 msgstr ""
+"- [Documentación de "
+"JupyterHub](https://jupyterhub.readthedocs.io/en/stable/)"
 
+# unordered list
 #: binderhub/binderhub.md:142
-# unordered list
-msgid "- [_The Turing Way_ Build a BinderHub Workshop](http://bit.ly/zero-to-binderhub-workshop)"
+msgid ""
+"- [_The Turing Way_ Build a BinderHub Workshop](http://bit.ly/zero-to-"
+"binderhub-workshop)"
 msgstr ""
+"- [Una guía _The Turing Way_ para construir un BinderHub](http://bit.ly/zero-to-binderhub-workshop)\n"
+" "
 
-#: binderhub/binderhub.md:144
 # header
+#: binderhub/binderhub.md:144
 msgid "## Definitions/glossary"
-msgstr ""
+msgstr "## Definiciones/glosario"
 
 #: binderhub/binderhub.md:146
 msgid "| | |"
-msgstr ""
+msgstr "| | |"
 
 #: binderhub/binderhub.md:147
 msgid "|:---|:---|"
-msgstr ""
+msgstr "|:---|:---|"
 
 #: binderhub/binderhub.md:148
-msgid "| Docker image | A machine-readable set of instructions to create a specified computational environment.|"
+msgid ""
+"| Docker image | A machine-readable set of instructions to create a "
+"specified computational environment.|"
 msgstr ""
+"| Una imagen Docker | Un conjunto de instrucciones legibles por la máquina "
+"para crear un entorno computacional específico.|"
 
 #: binderhub/binderhub.md:149
-msgid "| Docker container | An active computational environment executed from a Docker image. |"
+msgid ""
+"| Docker container | An active computational environment executed from a "
+"Docker image. |"
 msgstr ""
+"| Contenedor Docker | Un entorno computacional activo ejecutado desde una "
+"imagen Docker. |"
 
 #: binderhub/binderhub.md:150
-msgid "| Docker registry | A storage and distribution system for named Docker images. The registry allows Docker users to pull images locally, as well as push new images to the registry (given adequate access permissions when applicable). Such systems are often hosted in the cloud for ease of access. |"
+msgid ""
+"| Docker registry | A storage and distribution system for named Docker "
+"images. The registry allows Docker users to pull images locally, as well as "
+"push new images to the registry (given adequate access permissions when "
+"applicable). Such systems are often hosted in the cloud for ease of access. "
+"|"
 msgstr ""
+"| Un registro Docker | Un sistema de almacenamiento y distribución de "
+"imágenes Docker. El registro permite a los usuarios de Docker extraer "
+"imágenes localmente, así como introducir nuevas imágenes en el registro (con"
+" los permisos de acceso adecuados, si es el caso). Estos sistemas suelen "
+"estar alojados en la nube para facilitar el acceso. |"
 
 #: binderhub/binderhub.md:151
-msgid "| BinderHub | Technology for hosting reproducible computational environments. |"
+msgid ""
+"| BinderHub | Technology for hosting reproducible computational "
+"environments. |"
 msgstr ""
+"| BinderHub | Tecnología para alojar entornos computacionales reproducibles."
+" |"
 
 #: binderhub/binderhub.md:152
 msgid "| Binder | The user-facing service of a BinderHub. |"
-msgstr ""
+msgstr "| Binder | El servicio de acceso al usuario de un BinderHub. |"
 
 #: binderhub/binderhub.md:153
 msgid "| Kubernetes | Autonomous computational cluster manager. |"
-msgstr ""
+msgstr "| Kubernetes | Gestor de clústeres computacionales autónomos. |"
 
 #: binderhub/binderhub.md:154
 msgid "| Helm | A package manager for Kubernetes applications. |"
-msgstr ""
+msgstr "| Helm | Paquete gestor para aplicaciones Kubernetes. |"
 
 #: binderhub/binderhub.md:155
 msgid "| JupyterHub | A multi-user server for Jupyter Notebook instances. |"
 msgstr ""
+"| JupyterHub | Un servidor multiusuario para instancias de Jupyter Notebook."
+" |"
 
 #: binderhub/binderhub.md:156
-msgid "| repo2docker | A tool to build Docker images from code repositories. |"
+msgid ""
+"| repo2docker | A tool to build Docker images from code repositories. |"
 msgstr ""
+"| repo2docker | Herramienta para construir imágenes Docker a partir de "
+"repositorios de código. |"
 
-#: binderhub/binderhub.md:158
 # header
+#: binderhub/binderhub.md:158
 msgid "## Bibliography"
-msgstr ""
+msgstr "## Bibliografía  "
 
+# unordered list
 #: binderhub/binderhub.md:160
-# unordered list
-msgid "- **Kubernetes documentation**: [https://kubernetes.io/](https://kubernetes.io/)"
+msgid ""
+"- **Kubernetes documentation**: "
+"[https://kubernetes.io/](https://kubernetes.io/)"
 msgstr ""
+"- **Documentación de Kubernetes**: "
+"[https://kubernetes.io/](https://kubernetes.io/)"
 
+# unordered list
 #: binderhub/binderhub.md:161
-# unordered list
 msgid "- **Helm documentation**: [https://helm.sh/](https://helm.sh/)"
-msgstr ""
+msgstr "- **Documentación de Helm**: [https://helm.sh/](https://helm.sh/)"
 
+# unordered list
 #: binderhub/binderhub.md:162
-# unordered list
-msgid "- **repo2docker**: [https://repo2docker.readthedocs.io/en/latest/?badge=latest](https://repo2docker.readthedocs.io/en/latest/?badge=latest)"
+msgid ""
+"- **repo2docker**: "
+"[https://repo2docker.readthedocs.io/en/latest/?badge=latest](https://repo2docker.readthedocs.io/en/latest/?badge=latest)"
 msgstr ""
+"- **repo2docker**: "
+"[https://repo2docker.readthedocs.io/en/latest/?badge=latest](https://repo2docker.readthedocs.io/en/latest/?badge=latest)"
 
+# unordered list
 #: binderhub/binderhub.md:163
-# unordered list
-msgid "- **Microsoft Azure documentation on Role Based Access Control**: [https://docs.microsoft.com/en-us/azure/role-based-access-control/overview](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview)"
+msgid ""
+"- **Microsoft Azure documentation on Role Based Access Control**: "
+"[https://docs.microsoft.com/en-us/azure/role-based-access-"
+"control/overview](https://docs.microsoft.com/en-us/azure/role-based-access-"
+"control/overview)"
 msgstr ""
-
+"- **Documentación de Microsoft Azure sobre el control de acceso basado en "
+"roles**: [https://docs.microsoft.com/en-us/azure/role-based-access-"
+"control/overview](https://docs.microsoft.com/en-us/azure/role-based-access-"
+"control/overview)"

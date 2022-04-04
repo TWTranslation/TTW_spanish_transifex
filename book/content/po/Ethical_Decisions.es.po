@@ -1,197 +1,319 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Place Holder <test@test.com>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Camila Rangel Smith <camila.rangel.smith@gmail.com>, 2020
+# Fabricio Jiménez <fabricioajm@gmail.com>, 2021
+# Guiomar Niso <guiomar.niso@gmail.com>, 2021
+# Reina Camacho Toro <rcamacho07@gmail.com>, 2021
+# Pamela Villar González <pamela.villar.gonzalez@psych.uw.edu.pl>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: content\n"
 "Report-Msgid-Bugs-To: https://github.com/haiwen/seafile-docs/issues\n"
 "POT-Creation-Date: 2020-02-05 19:08:03+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Place Holder <test@test.com>\n"
-"Language-Team: Spanish <LL@li.org>\n"
+"PO-Revision-Date: 2020-04-07 14:21+0000\n"
+"Last-Translator: Pamela Villar González <pamela.villar.gonzalez@psych.uw.edu.pl>, 2021\n"
+"Language-Team: Spanish (https://www.transifex.com/theturingway/teams/107194/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+# header
 #: Ethical_Decisions/Planning_Research.md:1
-# header
 msgid "# Research Planning for Preclinical Scientists"
-msgstr ""
+msgstr "# Planificación de la investigación para científicos preclínicos"
 
-#: Ethical_Decisions/Planning_Research.md:3
 # header
+#: Ethical_Decisions/Planning_Research.md:3
 msgid "## Prerequisites / recommended skill level"
-msgstr ""
+msgstr "## Pre-requisitos / nivel de conocimiento recomendado"
 
 #: Ethical_Decisions/Planning_Research.md:4
 msgid "For preclinical scientists – no previous knowledge needed"
-msgstr ""
+msgstr "Para científicos preclínicos - no se necesitan conocimientos previos"
 
-#: Ethical_Decisions/Planning_Research.md:6
 # header
+#: Ethical_Decisions/Planning_Research.md:6
 msgid "## Summary"
-msgstr ""
+msgstr "## Resumen"
 
 #: Ethical_Decisions/Planning_Research.md:7
 msgid "Society continually debate the use of animals in scientific research. "
 msgstr ""
+"La sociedad continuamente cuestiona el uso de animales en la investigación "
+"científica."
 
 #: Ethical_Decisions/Planning_Research.md:8
-msgid "The fundamental questions are whether experiments using animals are morally justifiable and whether the potential benefits outweigh the suffering of those animals?"
+msgid ""
+"The fundamental questions are whether experiments using animals are morally "
+"justifiable and whether the potential benefits outweigh the suffering of "
+"those animals?"
 msgstr ""
+"Las preguntas fundamentales son si los experimentos con animales son "
+"moralmente justificables y si los posibles beneficios superan el sufrimiento"
+" de esos animales."
 
 #: Ethical_Decisions/Planning_Research.md:9
-msgid "These questions have been coupled with increasing concern about the poor reproducibility of findings from animal research, due to the impact this has on translation, scientific progress and the use of resources."
+msgid ""
+"These questions have been coupled with increasing concern about the poor "
+"reproducibility of findings from animal research, due to the impact this has"
+" on translation, scientific progress and the use of resources."
 msgstr ""
+"Estas preguntas se han ligado a una preocupación creciente por la escasa "
+"reproducibilidad de los resultados de la investigación con animales, debido "
+"al impacto que esto conlleva en el progreso científico y el uso de recursos."
 
 #: Ethical_Decisions/Planning_Research.md:10
-msgid "A question that is not often addressed is how those justified experiments are designed, conducted and analysed."
+msgid ""
+"A question that is not often addressed is how those justified experiments "
+"are designed, conducted and analysed."
 msgstr ""
+"Una cuestión que no suele abordarse es cómo se diseñan, cómo se llevan a "
+"cabo y cómo se analizan aquellos experimentos debidamente justificados."
 
 #: Ethical_Decisions/Planning_Research.md:11
-msgid "Flawed experimental design, inappropriate statistical analysis and inadequate reporting have been flagged as areas for major concern (Kilkenny et al., 2009 (https://doi.org/10.1371/journal.pone.0007824), Begley et al., 2015 (https://doi.org/10.1161/CIRCRESAHA.114.303819))."
+msgid ""
+"Flawed experimental design, inappropriate statistical analysis and "
+"inadequate reporting have been flagged as areas for major concern (Kilkenny "
+"et al., 2009 (https://doi.org/10.1371/journal.pone.0007824), Begley et al., "
+"2015 (https://doi.org/10.1161/CIRCRESAHA.114.303819))."
 msgstr ""
+"El diseño experimental defectuoso, el análisis estadístico inapropiado y los"
+" informes inadecuados se han identifcado como las áreas de mayor "
+"preocupación (Kilkenny et al., 2009 "
+"(https://doi.org/10.1371/journal.pone.0007824), Begley et al., 2015 ( "
+"https://doi.org/10.1161/CIRCRESAHA.114.303819))."
 
 #: Ethical_Decisions/Planning_Research.md:12
-msgid "It is morally incumbent upon us to ensure that animal experiments are appropriately designed, conducted and analysed otherwise the results are at risk of being unreliable."
+msgid ""
+"It is morally incumbent upon us to ensure that animal experiments are "
+"appropriately designed, conducted and analysed otherwise the results are at "
+"risk of being unreliable."
 msgstr ""
+"Nos incumbe moralmente asegurarnos de que los experimentos con animales se "
+"diseñen, se realicen y se analicen de manera adecuada; de lo contrario, los "
+"resultados corren el riesgo de no ser fiables."
 
 #: Ethical_Decisions/Planning_Research.md:13
-msgid "If the results are unreliable then the animals used have in effect have been wasted (Ioannidis et al., 2014 (https://doi.org/10.1016/S0140-6736(13)62227-8), de Vries et al., 2014 (https://doi.org/10.1093/ilar/ilu043)).  "
+msgid ""
+"If the results are unreliable then the animals used have in effect have been"
+" wasted (Ioannidis et al., 2014 "
+"(https://doi.org/10.1016/S0140-6736(13)62227-8), de Vries et al., 2014 "
+"(https://doi.org/10.1093/ilar/ilu043)).  "
 msgstr ""
+"Si los resultados no son fiables, entonces los animales utilizados se han "
+"utilizado inutilmente (Ioannidis et al., 2014 "
+"(https://doi.org/10.1016/S0140-6736(13)62227-8), de Vries et al., 2014 "
+"(https://doi.org/10.1093/ilar/ilu043))."
 
-#: Ethical_Decisions/Planning_Research.md:15
 # header
+#: Ethical_Decisions/Planning_Research.md:15
 msgid "## How this will help you/ why this is useful"
-msgstr ""
+msgstr "## Cómo te ayudará esto/ por qué esto es útil"
 
 #: Ethical_Decisions/Planning_Research.md:16
-msgid "Many preclinical researchers do not think of themselves as data scientists."
+msgid ""
+"Many preclinical researchers do not think of themselves as data scientists."
 msgstr ""
+"Muchos investigadores preclínicos no se consideran científicos de datos."
 
 #: Ethical_Decisions/Planning_Research.md:17
 msgid "This may be primarily because they work with small datasets."
 msgstr ""
+"Esto puede deberse principalmente a que trabajan con conjuntos de datos "
+"pequeños."
 
 #: Ethical_Decisions/Planning_Research.md:18
-msgid "However, there are many common open research themes and this chapter aims to assist preclinical scientists in understanding the why, where, when, and how they can employ open research initiatives, some designed specifically for the use by preclinical scientists."
+msgid ""
+"However, there are many common open research themes and this chapter aims to"
+" assist preclinical scientists in understanding the why, where, when, and "
+"how they can employ open research initiatives, some designed specifically "
+"for the use by preclinical scientists."
 msgstr ""
+"Sin embargo, hay muchos temas de investigación abierta comunes y este "
+"capítulo tiene como objetivo ayudar a los científicos preclínicos a "
+"comprender por qué, dónde, cuándo y cómo pueden utilizar estas iniciativas "
+"de investigación abierta, algunas de las cuales están diseñadas "
+"específicamente para científicos preclínicos."
 
-#: Ethical_Decisions/Planning_Research.md:19
 # blockquote, which can be cascaded
-msgid "> The above sentance may not fit with the structure of the book or flow within these chapters - Nadia"
+#: Ethical_Decisions/Planning_Research.md:19
+msgid ""
+"> The above sentance may not fit with the structure of the book or flow "
+"within these chapters - Nadia"
 msgstr ""
+"> La frase anterior puede no encajar con la estructura del libro o el flujo "
+"dentro de estos capítulos - Nadia"
 
-#: Ethical_Decisions/Planning_Research.md:21
 # header
+#: Ethical_Decisions/Planning_Research.md:21
 msgid "## The Experimental Design Assistant"
-msgstr ""
+msgstr "## Asistente para el diseño experimental"
 
 #: Ethical_Decisions/Planning_Research.md:22
-msgid "The National Centre for the Replacement, Refinement and Reduction of Animals in Research (NC3Rs) have a freely accessible web-based tool – The Experimental Design Assistant (EDA; https://eda.nc3rs.org.uk) which aims to help researchers improve the design, conduct, analysis and reporting of animal experiments."
+msgid ""
+"The National Centre for the Replacement, Refinement and Reduction of Animals"
+" in Research (NC3Rs) have a freely accessible web-based tool – The "
+"Experimental Design Assistant (EDA; https://eda.nc3rs.org.uk) which aims to "
+"help researchers improve the design, conduct, analysis and reporting of "
+"animal experiments."
 msgstr ""
+"El Centro Nacional para la Sustitución, el Perfeccionamiento y la Reducción "
+"de los Animales en la Investigación (NC3Rs, por sus siglas en inglés) "
+"dispone de una herramienta web de libre acceso: el Asistente de Diseño "
+"Experimental (EDA por sus siglas en inglés; https://eda.nc3rs.org.uk), cuyo "
+"objetivo es ayudar a quienes investigan a mejorar el diseño, la realización,"
+" el análisis y la presentación de informes de los experimentos con animales."
 
 #: Ethical_Decisions/Planning_Research.md:23
-msgid "Designing experiments with the EDA encourages researchers to consider the sources of bias at the design stages of the experiment before the data are collected, ensuring a rigorous design that is more likely to yield robust findings that can be reproduced."
+msgid ""
+"Designing experiments with the EDA encourages researchers to consider the "
+"sources of bias at the design stages of the experiment before the data are "
+"collected, ensuring a rigorous design that is more likely to yield robust "
+"findings that can be reproduced."
 msgstr ""
+"El diseño de experimentos con el EDA anima a quienes investigan a tener en "
+"cuenta las fuentes de sesgo en las fases de diseño del experimento antes de "
+"recoger los datos, lo que garantiza un diseño riguroso que tiene más "
+"probabilidades de producir resultados sólidos que puedan reproducirse."
 
 #: Ethical_Decisions/Planning_Research.md:24
-msgid "The tool ensures that you have a transparent, clear protocol and plan for statistical analysis which can be scrutinised before collecting data.  "
+msgid ""
+"The tool ensures that you have a transparent, clear protocol and plan for "
+"statistical analysis which can be scrutinised before collecting data.  "
 msgstr ""
+"La herramienta garantiza un protocolo transparente y claro, y un plan para "
+"el análisis estadístico que puede ser examinado antes de recopilar los "
+"datos."
 
 #: Ethical_Decisions/Planning_Research.md:26
 msgid "**Features of the EDA:**"
-msgstr ""
+msgstr "**Características del EDA:**"
 
+# unordered list
 #: Ethical_Decisions/Planning_Research.md:27
-# unordered list
-msgid "* A computer-aided design tool to develop a diagram representing the experimental plan"
+msgid ""
+"* A computer-aided design tool to develop a diagram representing the "
+"experimental plan"
 msgstr ""
+"* Una herramienta de diseño asistido por ordenador para elaborar un diagrama"
+" que represente el plan experimental"
 
+# unordered list
 #: Ethical_Decisions/Planning_Research.md:28
-# unordered list
 msgid "* feedback from an expert system on the experimental plan "
-msgstr ""
+msgstr "* feedback de un sistema experto sobre el plan experimental "
 
+# unordered list
 #: Ethical_Decisions/Planning_Research.md:29
-# unordered list
 msgid "* analysis suggestion "
-msgstr ""
+msgstr "* sugerencia de análisis "
 
-#: Ethical_Decisions/Planning_Research.md:30
 # unordered list
+#: Ethical_Decisions/Planning_Research.md:30
 msgid "* sample size calculation (power analysis)"
 msgstr ""
+"* cálculo del tamaño de la muestra (análisis de potencia o *power analysis*)"
 
+# unordered list
 #: Ethical_Decisions/Planning_Research.md:31
-# unordered list
 msgid "* randomisation sequence generation "
-msgstr ""
+msgstr "* generación de secuencias aleatorias "
 
+# unordered list
 #: Ethical_Decisions/Planning_Research.md:32
-# unordered list
 msgid "* support for allocation concealment and blinding "
-msgstr ""
+msgstr "* apoyo para estudios ciegos y ocultamiento de la asignación"
 
-#: Ethical_Decisions/Planning_Research.md:33
 # unordered list
-msgid "* web-based resources to improve knowledge of experimental design and analysis "
+#: Ethical_Decisions/Planning_Research.md:33
+msgid ""
+"* web-based resources to improve knowledge of experimental design and "
+"analysis "
 msgstr ""
+"* recursos en la web para mejorar el conocimiento sobre diseño y el análisis"
+" experimental "
 
+# header
 #: Ethical_Decisions/Planning_Research.md:35
-# header
 msgid "## Checklist"
-msgstr ""
+msgstr "## Lista de verificación"
 
+# blockquote, which can be cascaded
 #: Ethical_Decisions/Planning_Research.md:36
-# blockquote, which can be cascaded
-msgid "> this can be done at the end or maybe as a separate checklist exercise, but please do note things down here as you go"
+msgid ""
+"> this can be done at the end or maybe as a separate checklist exercise, but"
+" please do note things down here as you go"
 msgstr ""
+"Comprenda su software y para qué se utiliza. Saber esto te ayuda a decidir "
+"qué conceptos de sostenibilidad son apropiados para tus necesidades. Hay "
+"muchas herramientas y ecosistemas que se utilizan habitualmente para "
+"ayudarte a practicar estos conceptos: github, Docker y muchos más. Sigue "
+"leyendo para conocer estos conceptos y herramientas..."
 
+# header
 #: Ethical_Decisions/Planning_Research.md:38
-# header
 msgid "## What to learn next"
-msgstr ""
+msgstr "## ¿Qué aprender a continuación?"
 
+# blockquote, which can be cascaded
 #: Ethical_Decisions/Planning_Research.md:39
-# blockquote, which can be cascaded
 msgid "> recommended next chapters that are a good next step up"
-msgstr ""
+msgstr "> capítulos recomendados que son un buen siguiente paso"
 
+# header
 #: Ethical_Decisions/Planning_Research.md:41
-# header
 msgid "## Further reading"
-msgstr ""
+msgstr "## Lecturas complementarias"
 
+# blockquote, which can be cascaded
 #: Ethical_Decisions/Planning_Research.md:42
-# blockquote, which can be cascaded
-msgid "> top 3/5 resources to read on this topic (if they weren't licensed so we could include them above already) at the top, maybe in their own box/in bold."
+msgid ""
+"> top 3/5 resources to read on this topic (if they weren't licensed so we "
+"could include them above already) at the top, maybe in their own box/in "
+"bold."
 msgstr ""
+"> los 3/5 mejores recursos para leer sobre este tema (si no tuvieran "
+"licencia para poder incluirlos ya arriba) en la parte superior, quizás en su"
+" propio recuadro/en negrita."
 
+# blockquote, which can be cascaded
 #: Ethical_Decisions/Planning_Research.md:43
-# blockquote, which can be cascaded
-msgid "> less relevant/favourite resources in case someone wants to dig into this in detail"
+msgid ""
+"> less relevant/favourite resources in case someone wants to dig into this "
+"in detail"
 msgstr ""
+"> recursos menos relevantes/favoritos en caso de que alguien quiera "
+"profundizar en esto"
 
+# header
 #: Ethical_Decisions/Planning_Research.md:45
-# header
 msgid "## Definitions/glossary"
-msgstr ""
+msgstr "## Definiciones/glosario"
 
+# blockquote, which can be cascaded
 #: Ethical_Decisions/Planning_Research.md:46
-# blockquote, which can be cascaded
-msgid "> Link to the glossary here or copy in key concepts/definitions that readers should be aware of to get the most out of this chapter"
+msgid ""
+"> Link to the glossary here or copy in key concepts/definitions that readers"
+" should be aware of to get the most out of this chapter"
 msgstr ""
+"> Enlaza aquí con el glosario o copia los conceptos/definiciones clave que "
+"los lectores deben conocer para sacar el máximo provecho de este capítulo"
 
-#: Ethical_Decisions/Planning_Research.md:48
 # header
+#: Ethical_Decisions/Planning_Research.md:48
 msgid "## Bibliography"
-msgstr ""
+msgstr "## Bibliografía  "
 
-#: Ethical_Decisions/Planning_Research.md:49
 # blockquote, which can be cascaded
+#: Ethical_Decisions/Planning_Research.md:49
 msgid "> Credit/urls for any materials that form part of the chapter's text."
 msgstr ""
-
+"> Créditos/urls para cualquier material que forme parte del texto del "
+"capítulo."
